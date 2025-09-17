@@ -1,0 +1,86 @@
+/* Overwrite custom bootstrap thumbnail */
+.thumbnail {
+border-top-left-radius: 0px !important;
+border-top-right-radius: 0px !important;
+border-bottom-left-radius: 0px !important;
+border-bottom-right-radius: 0px !important;
+background-color: transparent !important; 
+border: 0px !important;
+}
+
+.thumbnail > img,
+.thumbnail a > img {
+border-top-left-radius: 0px !important;
+border-top-right-radius: 0px !important;
+border-bottom-left-radius: 0px !important;
+border-bottom-right-radius: 0px !important;
+margin-bottom: 20px;
+}
+
+/* hover effect*/
+.view {
+overflow: hidden;
+position: relative;
+text-align: center;
+}
+@media {
+.view .mask,.view .content {
+width: 360px;
+height: 231px;
+position: absolute;
+overflow: hidden;
+top: 0;
+margin-top: 0px;
+border-top-left-radius: 0px;
+border-bottom-right-radius: 0px;
+}
+}
+/* Media Queries */
+@media screen and (min-width:320px) and (max-width:540px) {
+.view .mask,.view .content {
+    margin-top: 44px;
+    width: 152px;
+    height: 114px;
+    border-top-left-radius: 38px;
+    border-bottom-right-radius: 38px;
+ }
+}
+.view img {
+ display: block;
+ position: relative;
+}
+
+/* Hover Effect anime */
+.view-first img {
+-webkit-transition: all 0.2s linear;
+-moz-transition: all 0.2s linear;
+-o-transition: all 0.2s linear;
+-ms-transition: all 0.2s linear;
+transition: all 0.2s linear;
+}
+.view-first .mask {
+-ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=0)";
+filter: alpha(opacity=0);
+opacity: 0;
+background-color: rgba(153,15,5, 0.7);
+-webkit-transition: all 0.4s ease-in-out;
+-moz-transition: all 0.4s ease-in-out;
+-o-transition: all 0.4s ease-in-out;
+-ms-transition: all 0.4s ease-in-out;
+transition: all 0.4s ease-in-out;
+}
+.view-first:hover .mask {
+-ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=100)";
+filter: alpha(opacity=100);
+opacity: 1;
+}
+
+.hover-btns
+{
+  padding-top:100px;
+  font-family: inherit;
+  font-weight: bold;
+  line-height: 1.1;
+  color:#FFF;
+  font-size:24px;
+}

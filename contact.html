@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Entre em contato com a Swisstool - Ferramentas de precisão">
+    <meta name="keywords" content="contato, swisstool, orçamento, ferramentas, suporte">
+    <title>Contato | Swisstool - Fale Conosco</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="img/favicon.jpg">
+    
+    <!-- Modern CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="css/global-modern.css" rel="stylesheet">
+    
+    <style>
+        /* Contact Page Specific Styles */
+        .contact-info-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            height: 100%;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            text-align: center;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .contact-info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-light);
+        }
+        
+        .contact-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-info-card:hover .contact-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .contact-form {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            color: var(--text-dark);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-control,
+        .form-select {
+            padding: 1rem 1.5rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus,
+        .form-select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(140, 38, 36, 0.1);
+            outline: none;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .map-container {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            height: 500px;
+            background: #f0f0f0;
+            position: relative;
+        }
+        
+        .map-overlay {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow-md);
+            z-index: 1;
+        }
+        
+        .office-hours {
+            background: linear-gradient(135deg, rgba(140, 38, 36, 0.05) 0%, rgba(181, 53, 50, 0.05) 100%);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-top: 2rem;
+        }
+        
+        .hours-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .hours-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(140, 38, 36, 0.1);
+        }
+        
+        .hours-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .day {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+        
+        .time {
+            color: var(--primary);
+            font-weight: 500;
+        }
+        
+        .social-contact {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        
+        .social-contact a {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.25rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .social-contact a:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 20px rgba(140, 38, 36, 0.3);
+        }
+        
+        .contact-cta {
+            background: var(--gradient);
+            color: white;
+            padding: 4rem;
+            border-radius: 30px;
+            text-align: center;
+            margin: 3rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 60%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .required {
+            color: var(--primary);
+        }
+        
+        .form-check {
+            margin-bottom: 1rem;
+        }
+        
+        .form-check-input {
+            width: 20px;
+            height: 20px;
+            margin-top: 0.25rem;
+            margin-right: 0.5rem;
+            border: 2px solid #e0e0e0;
+        }
+        
+        .form-check-input:checked {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+        
+        .alert-custom {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.1) 0%, rgba(76, 175, 80, 0.05) 100%);
+            border: 1px solid #4CAF50;
+            color: #2E7D32;
+            border-radius: 10px;
+            padding: 1rem;
+            display: none;
+        }
+        
+        .alert-custom.show {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar-modern" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="img/logo.jpg" alt="Swisstool">
+                SWISSTOOL
+            </a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="empresa.html" class="nav-link">Empresa</a></li>
+                <li><a href="produtos.html" class="nav-link">Produtos</a></li>
+                <li><a href="servicos.html" class="nav-link">Serviços</a></li>
+                <li><a href="contact.html" class="nav-link active nav-cta">Contato</a></li>
+            </ul>
+            <div class="mobile-menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="page-header-content">
+            <h1 data-aos="fade-up">Entre em Contato</h1>
+            <p data-aos="fade-up" data-aos-delay="100">Estamos prontos para atender sua empresa com as melhores soluções</p>
+            <div class="breadcrumb-modern" data-aos="fade-up" data-aos-delay="200">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <span>Contato</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Info Section -->
+    <section class="content-section">
+        <div class="container-modern">
+            <div class="row g-4">
+                <div class="col-lg-4" data-aos="fade-up">
+                    <div class="contact-info-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3>Endereço</h3>
+                        <p>Rua Aristides Costa, S/N<br>
+                        Jardim Monte Alegre<br>
+                        CEP: 13990-000<br>
+                        Espírito Santo do Pinhal/SP<br>
+                        Caixa Postal 195</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="contact-info-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <h3>Telefone</h3>
+                        <p><strong>Telefone/Fax:</strong><br>
+                        (19) 3651-3459<br><br>
+                        <strong>WhatsApp:</strong><br>
+                        (19) 99999-9999</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="contact-info-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3>E-mail</h3>
+                        <p><strong>Vendas:</strong><br>
+                        vendas@swisstool.com.br<br><br>
+                        <strong>Suporte:</strong><br>
+                        swisstool@swisstool.com.br</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="content-section bg-light">
+        <div class="container-modern">
+            <div class="row">
+                <div class="col-lg-8" data-aos="fade-right">
+                    <div class="contact-form">
+                        <h2 class="mb-4">Envie sua Mensagem</h2>
+                        <div class="alert-custom" id="successAlert">
+                            <i class="fas fa-check-circle"></i> Mensagem enviada com sucesso! Entraremos em contato em breve.
+                        </div>
+                        <form id="contactForm">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="name" class="form-label">Nome Completo <span class="required">*</span></label>
+                                        <input type="text" class="form-control" id="name" name="name" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="company" class="form-label">Empresa</label>
+                                        <input type="text" class="form-control" id="company" name="company">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="email" class="form-label">E-mail <span class="required">*</span></label>
+                                        <input type="email" class="form-control" id="email" name="email" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="phone" class="form-label">Telefone <span class="required">*</span></label>
+                                        <input type="tel" class="form-control" id="phone" name="phone" required>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject" class="form-label">Assunto <span class="required">*</span></label>
+                                <select class="form-select" id="subject" name="subject" required>
+                                    <option value="">Selecione um assunto</option>
+                                    <option value="orcamento">Solicitar Orçamento</option>
+                                    <option value="suporte">Suporte Técnico</option>
+                                    <option value="ferramentas">Ferramentas Especiais</option>
+                                    <option value="parceria">Parceria Comercial</option>
+                                    <option value="outro">Outro Assunto</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message" class="form-label">Mensagem <span class="required">*</span></label>
+                                <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="newsletter" name="newsletter">
+                                <label class="form-check-label" for="newsletter">
+                                    Desejo receber novidades e promoções por e-mail
+                                </label>
+                            </div>
+                            
+                            <button type="submit" class="btn-primary-custom">
+                                <i class="fas fa-paper-plane"></i> Enviar Mensagem
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4" data-aos="fade-left">
+                    <div class="office-hours">
+                        <h3 class="mb-4"><i class="fas fa-clock"></i> Horário de Atendimento</h3>
+                        <ul class="hours-list">
+                            <li>
+                                <span class="day">Segunda a Sexta</span>
+                                <span class="time">08:00 - 18:00</span>
+                            </li>
+                            <li>
+                                <span class="day">Sábado</span>
+                                <span class="time">08:00 - 12:00</span>
+                            </li>
+                            <li>
+                                <span class="day">Domingo</span>
+                                <span class="time">Fechado</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="office-hours mt-4">
+                        <h3 class="mb-4"><i class="fas fa-share-alt"></i> Redes Sociais</h3>
+                        <p>Siga-nos para ficar por dentro das novidades</p>
+                        <div class="social-contact">
+                            <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+                            <a href="#" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="content-section">
+        <div class="container-modern">
+            <div class="section-title">
+                <h2 data-aos="fade-up">Nossa Localização</h2>
+                <p data-aos="fade-up" data-aos-delay="100">Visite nossa sede em Espírito Santo do Pinhal</p>
+            </div>
+            
+            <div class="map-container" data-aos="zoom-in">
+                <!-- Google Maps iframe would go here -->
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3700.0!2d-46.7417!3d-22.0019!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjLCsDAwJzA3LjAiUyA0NsKwNDQnMzAuMCJX!5e0!3m2!1spt-BR!2sbr!4v1234567890" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+                <div class="map-overlay">
+                    <h4>Swisstool Ferramentas de Precisão</h4>
+                    <p class="mb-0"><i class="fas fa-map-marker-alt text-primary"></i> Rua Aristides Costa, S/N - Espírito Santo do Pinhal/SP</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="content-section">
+        <div class="container-modern">
+            <div class="contact-cta" data-aos="zoom-in">
+                <h2 class="mb-3">Atendimento Rápido e Personalizado</h2>
+                <p class="mb-4">Nossa equipe está pronta para atender suas necessidades com agilidade e eficiência</p>
+                <div class="d-flex justify-content-center gap-3 flex-wrap">
+                    <a href="tel:+551936513459" class="btn-primary-custom">
+                        <i class="fas fa-phone"></i> Ligar Agora
+                    </a>
+                    <a href="https://wa.me/5519999999999" target="_blank" class="btn-secondary-custom" style="background: white; color: var(--primary);">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>SWISSTOOL</h3>
+                    <p>Desde 1995 fabricando ferramentas de precisão com tecnologia Suíça, atendendo os mais diversos segmentos da indústria nacional.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="empresa.html">Sobre Nós</a></li>
+                        <li><a href="produtos.html">Produtos</a></li>
+                        <li><a href="servicos.html">Serviços</a></li>
+                        <li><a href="contact.html">Contato</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Produtos</h4>
+                    <ul>
+                        <li><a href="brocas.html">Brocas</a></li>
+                        <li><a href="fresas-topo.html">Fresas</a></li>
+                        <li><a href="alargadores.html">Alargadores</a></li>
+                        <li><a href="serras-circulares.html">Serras</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Contato</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Espírito Santo do Pinhal/SP</li>
+                        <li><i class="fas fa-phone"></i> (19) 3651-3459</li>
+                        <li><i class="fas fa-envelope"></i> swisstool@swisstool.com.br</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Swisstool. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+        
+        // Mobile Menu
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+        
+        mobileMenu.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+        
+        // Navbar Scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Contact Form Handler
+        const contactForm = document.getElementById('contactForm');
+        const successAlert = document.getElementById('successAlert');
+        
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simulate form submission
+            setTimeout(() => {
+                successAlert.classList.add('show');
+                contactForm.reset();
+                
+                // Hide alert after 5 seconds
+                setTimeout(() => {
+                    successAlert.classList.remove('show');
+                }, 5000);
+            }, 500);
+        });
+        
+        // Phone mask
+        const phoneInput = document.getElementById('phone');
+        phoneInput.addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 0) {
+                if (value.length <= 10) {
+                    value = value.replace(/(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3');
+                } else {
+                    value = value.replace(/(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3');
+                }
+            }
+            e.target.value = value;
+        });
+    </script>
+</body>
+</html>

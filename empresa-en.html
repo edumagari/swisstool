@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Swisstool - Learn about our history, mission and values. Swiss technology since 1995.">
+    <meta name="keywords" content="swisstool, company, history, mission, values, swiss technology">
+    <title>Company | Swisstool - Our History</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="img/favicon.jpg">
+    
+    <!-- Modern CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="css/global-modern.css" rel="stylesheet">
+    
+    <style>
+        /* Company Page Specific Styles */
+        .timeline {
+            position: relative;
+            padding: 4rem 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--gradient);
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            margin-bottom: 4rem;
+            position: relative;
+        }
+        
+        .timeline-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-sm);
+            width: calc(50% - 40px);
+            position: relative;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+        }
+        
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 30px;
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            left: -49px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content::before {
+            right: -49px;
+        }
+        
+        .timeline-year {
+            background: var(--gradient);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .value-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid #e0e0e0;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .value-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .value-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, rgba(140, 38, 36, 0.1) 0%, rgba(181, 53, 50, 0.1) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2.5rem;
+            color: var(--primary);
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .team-member {
+            text-align: center;
+        }
+        
+        .team-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            overflow: hidden;
+            border: 5px solid white;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .team-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .team-member:hover .team-photo img {
+            transform: scale(1.1);
+        }
+        
+        .mission-section {
+            background: linear-gradient(135deg, rgba(140, 38, 36, 0.05) 0%, rgba(181, 53, 50, 0.05) 100%);
+            padding: 4rem;
+            border-radius: 30px;
+            margin: 3rem 0;
+        }
+        
+        .stats-company {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+        
+        .stat-company {
+            padding: 2rem;
+            background: white;
+            border-radius: 20px;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .stat-company-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-company-label {
+            color: var(--text-light);
+            font-size: 1.125rem;
+        }
+        
+        .markets-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .market-item {
+            background: white;
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            border: 1px solid #e0e0e0;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .market-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-sm);
+            border-color: var(--primary-light);
+        }
+        
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-content {
+                width: calc(100% - 60px);
+                margin-left: 60px !important;
+            }
+            
+            .timeline-content::before {
+                left: -49px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar-modern" id="navbar">
+        <div class="nav-container">
+            <a href="index-en.html" class="logo">
+                <img src="img/logo.jpg" alt="Swisstool">
+                SWISSTOOL
+            </a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index-en.html" class="nav-link">Home</a></li>
+                <li><a href="empresa-en.html" class="nav-link active">Company</a></li>
+                <li><a href="produtos-en.html" class="nav-link">Products</a></li>
+                <li><a href="servicos-en.html" class="nav-link">Services</a></li>
+                <li><a href="contact-en.html" class="nav-link nav-cta">Contact</a></li>
+            </ul>
+            <div class="mobile-menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="page-header-content">
+            <h1 data-aos="fade-up">Our Company</h1>
+            <p data-aos="fade-up" data-aos-delay="100">Over 25 years of excellence in precision tools</p>
+            <div class="breadcrumb-modern" data-aos="fade-up" data-aos-delay="200">
+                <a href="index-en.html">Home</a>
+                <span>/</span>
+                <span>Company</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="content-section">
+        <div class="container-modern">
+            <div class="mission-section" data-aos="fade-up">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <h2 class="mb-4">Our Mission</h2>
+                        <p class="lead">To provide precision tools with the highest quality, combining Swiss technology and Brazilian expertise to boost the productivity of the national industry.</p>
+                        <p>Since 1995, Swisstool has been synonymous with excellence in industrial tools. Our dedication to innovation and quality positions us as leaders in the Brazilian market.</p>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="stats-company">
+                            <div class="stat-company">
+                                <div class="stat-company-number">25+</div>
+                                <div class="stat-company-label">Years in Market</div>
+                            </div>
+                            <div class="stat-company">
+                                <div class="stat-company-number">5000+</div>
+                                <div class="stat-company-label">Active Customers</div>
+                            </div>
+                            <div class="stat-company">
+                                <div class="stat-company-number">100%</div>
+                                <div class="stat-company-label">Quality Guaranteed</div>
+                            </div>
+                            <div class="stat-company">
+                                <div class="stat-company-number">50+</div>
+                                <div class="stat-company-label">Employees</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Company History Section -->
+    <section class="content-section bg-light">
+        <div class="container-modern">
+            <div class="row">
+                <div class="col-lg-8" data-aos="fade-right">
+                    <h2 class="mb-4">Our History</h2>
+                    <p>Swisstool Industry and Commerce was founded in 1995 by Mr. Markus Niggli. Having the experience from over 20 years in the production of precision tools, Mr. Niggli realized the potential and the necessity of special tools in the Brazilian market.</p>
+                    <p>Taking advantage from the economical stability and the opening of the Brazilian commerce, that facilitated the import of the machinery necessary for the production of tools with high precision and quality, he began the company in Espírito Santo do Pinhal – a small town 200 km from São Paulo – in a small hangar with 500sqm.</p>
+                    <p>Over the years he established the name of the company in the precision tools industry – where Swisstool became synonymous of quality and on time delivery – and keeps growing. Nowadays Swisstool counts with a structure of more than 8.000sqm, with 3.000sqm of buildings, and serves many sectors from the Brazilian market.</p>
+                </div>
+                <div class="col-lg-4" data-aos="fade-left">
+                    <img src="img/swisstool-empresa2.jpg" alt="Swisstool History" class="img-fluid rounded-3 shadow mb-4">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="content-section">
+        <div class="container-modern">
+            <div class="section-title">
+                <h2 data-aos="fade-up">Milestones</h2>
+                <p data-aos="fade-up" data-aos-delay="100">A journey of continuous growth and innovation</p>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-content">
+                        <span class="timeline-year">1995</span>
+                        <h3>Foundation</h3>
+                        <p>Beginning of operations in Espírito Santo do Pinhal/SP focusing on precision tools imported from Switzerland.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item" data-aos="fade-left">
+                    <div class="timeline-content">
+                        <span class="timeline-year">2000</span>
+                        <h3>Expansion</h3>
+                        <p>Expansion of the manufacturing facility and beginning of national production with Swiss technology.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-content">
+                        <span class="timeline-year">2005</span>
+                        <h3>Modernization</h3>
+                        <p>Investment in latest generation CNC machines to increase precision and productivity.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item" data-aos="fade-left">
+                    <div class="timeline-content">
+                        <span class="timeline-year">2010</span>
+                        <h3>Certification</h3>
+                        <p>Obtaining ISO certifications ensuring international quality standards.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-content">
+                        <span class="timeline-year">2015</span>
+                        <h3>Innovation</h3>
+                        <p>Launch of own line of customized special tools.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item" data-aos="fade-left">
+                    <div class="timeline-content">
+                        <span class="timeline-year">2020</span>
+                        <h3>Digital Transformation</h3>
+                        <p>Implementation of Industry 4.0 and intelligent production systems.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Markets Section -->
+    <section class="content-section bg-light">
+        <div class="container-modern">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="mb-4" data-aos="fade-up">Markets We Serve</h2>
+                    <p data-aos="fade-up" data-aos-delay="100">Our precision tools serve diverse sectors of Brazilian industry:</p>
+                    
+                    <div class="markets-grid" data-aos="fade-up" data-aos-delay="200">
+                        <div class="market-item">Aeronautics</div>
+                        <div class="market-item">Electrical & Electronic</div>
+                        <div class="market-item">Automotive</div>
+                        <div class="market-item">Sanitary Metal</div>
+                        <div class="market-item">Locks</div>
+                        <div class="market-item">Dentistry</div>
+                        <div class="market-item">Auto Parts</div>
+                        <div class="market-item">Toolmakers</div>
+                        <div class="market-item">Orthopedics</div>
+                        <div class="market-item">Ballpoint Pens</div>
+                        <div class="market-item">Jewelry</div>
+                        <div class="market-item">Valves</div>
+                        <div class="market-item">Connections</div>
+                        <div class="market-item">Machines</div>
+                        <div class="market-item">Appliances</div>
+                        <div class="market-item">Precision Mechanics</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="content-section">
+        <div class="container-modern">
+            <div class="section-title">
+                <h2 data-aos="fade-up">Our Values</h2>
+                <p data-aos="fade-up" data-aos-delay="100">Principles that guide our daily actions</p>
+            </div>
+            
+            <div class="values-grid">
+                <div class="value-card" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="value-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3>Quality</h3>
+                    <p>Absolute commitment to excellence in every tool produced, following rigorous control standards.</p>
+                </div>
+                
+                <div class="value-card" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="value-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Innovation</h3>
+                    <p>Constant search for new technologies and solutions that add value to our customers.</p>
+                </div>
+                
+                <div class="value-card" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="value-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Partnership</h3>
+                    <p>Close and lasting relationships with customers, suppliers and employees.</p>
+                </div>
+                
+                <div class="value-card" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="value-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Sustainability</h3>
+                    <p>Responsible practices that respect the environment and promote sustainable development.</p>
+                </div>
+                
+                <div class="value-card" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="value-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>People</h3>
+                    <p>Valuing and continuous development of our employees, the foundation of our success.</p>
+                </div>
+                
+                <div class="value-card" data-aos="zoom-in" data-aos-delay="600">
+                    <div class="value-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Integrity</h3>
+                    <p>Ethics and transparency in all our relationships and business processes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Infrastructure Section -->
+    <section class="content-section bg-light">
+        <div class="container-modern">
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <h2 class="mb-4">Modern Infrastructure</h2>
+                    <p class="lead">State-of-the-art facilities for high precision tool production.</p>
+                    <ul class="list-unstyled">
+                        <li class="mb-3"><i class="fas fa-check-circle text-primary me-2"></i> 8,000m² total area with 3,000m² of buildings</li>
+                        <li class="mb-3"><i class="fas fa-check-circle text-primary me-2"></i> Latest generation CNC machines</li>
+                        <li class="mb-3"><i class="fas fa-check-circle text-primary me-2"></i> Equipped metrology laboratory</li>
+                        <li class="mb-3"><i class="fas fa-check-circle text-primary me-2"></i> Product development center</li>
+                        <li class="mb-3"><i class="fas fa-check-circle text-primary me-2"></i> Climate-controlled warehouse</li>
+                        <li class="mb-3"><i class="fas fa-check-circle text-primary me-2"></i> Certified quality system</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <img src="img/slide2.jpg" alt="Swisstool Facilities" class="img-fluid rounded-3 shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="content-section">
+        <div class="container-modern text-center">
+            <h2 class="mb-3" data-aos="fade-up">Be Part of Our History</h2>
+            <p class="mb-4" data-aos="fade-up" data-aos-delay="100">Contact us and discover how we can help your company</p>
+            <div data-aos="fade-up" data-aos-delay="200">
+                <a href="contact-en.html" class="btn-primary-custom me-3">Contact Us</a>
+                <a href="produtos-en.html" class="btn-secondary-custom">View Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>SWISSTOOL</h3>
+                    <p>Since 1995 manufacturing precision tools with Swiss technology, serving the most diverse segments of the national industry.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="empresa-en.html">About Us</a></li>
+                        <li><a href="produtos-en.html">Products</a></li>
+                        <li><a href="servicos-en.html">Services</a></li>
+                        <li><a href="contact-en.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Products</h4>
+                    <ul>
+                        <li><a href="brocas-en.html">Drills</a></li>
+                        <li><a href="fresas-topo-en.html">Mills</a></li>
+                        <li><a href="alargadores-en.html">Reamers</a></li>
+                        <li><a href="serras-circulares-en.html">Saws</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Espírito Santo do Pinhal/SP</li>
+                        <li><i class="fas fa-phone"></i> (19) 3651-3459</li>
+                        <li><i class="fas fa-envelope"></i> swisstool@swisstool.com.br</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Swisstool. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+        
+        // Mobile Menu
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+        
+        mobileMenu.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+        
+        // Navbar Scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Counter Animation
+        const counters = document.querySelectorAll('.stat-company-number');
+        const speed = 200;
+        
+        const countUp = () => {
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = parseInt(counter.innerText);
+                    const count = parseInt(counter.innerText);
+                    
+                    if (!isNaN(target)) {
+                        const inc = target / speed;
+                        
+                        if (count < target) {
+                            counter.innerText = Math.ceil(count + inc);
+                            setTimeout(updateCount, 1);
+                        } else {
+                            counter.innerText = target + (counter.innerText.includes('+') ? '+' : '');
+                        }
+                    }
+                };
+                
+                // Store original value
+                const originalValue = counter.innerText;
+                counter.innerText = '0';
+                
+                // Restore original value for animation
+                setTimeout(() => {
+                    counter.innerText = originalValue;
+                    updateCount();
+                }, 100);
+            });
+        };
+        
+        // Trigger counter on scroll
+        let counted = false;
+        const statsSection = document.querySelector('.stats-company');
+        
+        if (statsSection) {
+            window.addEventListener('scroll', () => {
+                const scrollPos = window.scrollY + window.innerHeight;
+                const sectionPos = statsSection.offsetTop + statsSection.offsetHeight / 2;
+                
+                if (scrollPos > sectionPos && !counted) {
+                    countUp();
+                    counted = true;
+                }
+            });
+        }
+    </script>
+</body>
+</html>

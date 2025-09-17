@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Brocas de precisão - Helicoidais e Faca Reta | Swisstool">
+    <meta name="author" content="Swisstool">
+    
+    <link rel="apple-touch-icon" sizes="144x144" href="apple-touch-icon-144x144.jpg">
+    <link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-114x114.jpg">
+    <link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-72x72.jpg">
+    <link rel="apple-touch-icon" href="apple-touch-icon.jpg"> 
+    <link rel="shortcut icon" href="img/favicon.jpg"/>
+
+    <title>Brocas - Swisstool</title>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/global-modern.css" rel="stylesheet">
+    
+    <style>
+        /* Product Detail Specific Styles */
+        .product-hero {
+            padding: 120px 0 60px;
+            background: linear-gradient(135deg, #f8f8f8 0%, #e8e8e8 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-gallery {
+            position: relative;
+        }
+        
+        .main-image {
+            width: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            cursor: zoom-in;
+            transition: transform 0.3s ease;
+        }
+        
+        .main-image:hover {
+            transform: scale(1.02);
+        }
+        
+        .main-image img {
+            width: 100%;
+            height: auto;
+        }
+        
+        .gallery-thumbs {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .gallery-thumb {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-thumb.active {
+            border-color: var(--primary);
+        }
+        
+        .gallery-thumb:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .gallery-thumb img {
+            width: 100%;
+            height: auto;
+        }
+        
+        .product-info h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+        
+        .product-badge {
+            display: inline-block;
+            background: var(--gradient);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        
+        .product-description {
+            font-size: 1.125rem;
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+        
+        .specs-tabs {
+            margin-top: 3rem;
+        }
+        
+        .nav-tabs {
+            border: none;
+            background: #f8f8f8;
+            border-radius: 15px;
+            padding: 0.5rem;
+        }
+        
+        .nav-tabs .nav-link {
+            border: none;
+            color: var(--text-dark);
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-tabs .nav-link:hover {
+            background: white;
+        }
+        
+        .nav-tabs .nav-link.active {
+            background: white;
+            color: var(--primary);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .tab-content {
+            padding: 2rem 0;
+        }
+        
+        .specs-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .specs-list li {
+            padding: 1rem;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .specs-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .specs-list i {
+            color: var(--primary);
+            margin-right: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .feature-card {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #f8f8f8 0%, #ffffff 100%);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .feature-card i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card h4 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .cta-section {
+            background: var(--gradient);
+            padding: 80px 0;
+            color: white;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-section p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .related-products {
+            padding: 80px 0;
+            background: #f8f8f8;
+        }
+        
+        .product-carousel {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .related-product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .related-product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .related-product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .related-product-info {
+            padding: 1.5rem;
+        }
+        
+        .related-product-info h4 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+        
+        .related-product-info p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+        
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            cursor: zoom-out;
+        }
+        
+        .lightbox.active {
+            display: flex;
+        }
+        
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .lightbox-close:hover {
+            transform: rotate(90deg);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar-modern">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="img/logo.jpg" alt="Swisstool">
+                Swisstool
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="empresa.html" class="nav-link">Empresa</a></li>
+                <li><a href="servicos.html" class="nav-link">Serviços</a></li>
+                <li><a href="produtos.html" class="nav-link active">Produtos</a></li>
+                <li><a href="contact.html" class="nav-link nav-cta">Contato</a></li>
+            </ul>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Product Hero -->
+    <section class="product-hero">
+        <div class="container-modern">
+            <div class="breadcrumb-modern">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <a href="produtos.html">Produtos</a>
+                <span>/</span>
+                <span>Brocas</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Detail -->
+    <section class="content-section">
+        <div class="container-modern">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="product-gallery" data-aos="fade-right">
+                        <div class="main-image" onclick="openLightbox('img/brocas.jpg')">
+                            <img src="img/brocas.jpg" alt="Brocas Helicoidais" id="mainImage">
+                        </div>
+                        <div class="gallery-thumbs">
+                            <div class="gallery-thumb active" onclick="changeImage('img/brocas.jpg', this)">
+                                <img src="img/brocas.jpg" alt="Brocas Helicoidais">
+                            </div>
+                            <div class="gallery-thumb" onclick="changeImage('img/brocas2.jpg', this)">
+                                <img src="img/brocas2.jpg" alt="Brocas Faca Reta">
+                            </div>
+                            <div class="gallery-thumb" onclick="changeImage('img/brocas-home.jpg', this)">
+                                <img src="img/brocas-home.jpg" alt="Brocas Variadas">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="product-info" data-aos="fade-left">
+                        <span class="product-badge">Ferramentas de Precisão</span>
+                        <h1>Brocas de Alta Performance</h1>
+                        <p class="product-description">
+                            Linha completa de brocas helicoidais e faca reta para usinagem de precisão. 
+                            Desenvolvidas com tecnologia de ponta para garantir máxima eficiência e durabilidade 
+                            em diversos tipos de materiais.
+                        </p>
+                        
+                        <div class="feature-grid">
+                            <div class="feature-card">
+                                <i class="fas fa-cogs"></i>
+                                <h4>Alta Precisão</h4>
+                                <p>Tolerâncias rigorosas</p>
+                            </div>
+                            <div class="feature-card">
+                                <i class="fas fa-shield-alt"></i>
+                                <h4>Durabilidade</h4>
+                                <p>Material de alta qualidade</p>
+                            </div>
+                            <div class="feature-card">
+                                <i class="fas fa-chart-line"></i>
+                                <h4>Performance</h4>
+                                <p>Máxima eficiência</p>
+                            </div>
+                            <div class="feature-card">
+                                <i class="fas fa-certificate"></i>
+                                <h4>Garantia</h4>
+                                <p>Qualidade certificada</p>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <a href="contact.html" class="btn-primary-custom">
+                                <i class="fas fa-envelope"></i> Solicitar Orçamento
+                            </a>
+                            <a href="#specs" class="btn-secondary-custom ms-3">
+                                <i class="fas fa-info-circle"></i> Especificações
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Specifications Tabs -->
+            <div class="specs-tabs mt-5" id="specs">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#helicoidais">
+                            Brocas Helicoidais
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#faca-reta">
+                            Brocas Faca Reta
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tecnicas">
+                            Características Técnicas
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#aplicacoes">
+                            Aplicações
+                        </button>
+                    </li>
+                </ul>
+
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="helicoidais">
+                        <h3>Brocas Helicoidais</h3>
+                        <p>Utilizada na usinagem de materiais ferrosos, como aço, aço inox, entre outros.</p>
+                        <ul class="specs-list">
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Design helicoidal otimizado para evacuação eficiente de cavacos</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Ângulo de hélice projetado para máxima performance em materiais ferrosos</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Disponível em diversas dimensões e comprimentos</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Opções com refrigeração interna para aplicações de alta performance</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="tab-pane fade" id="faca-reta">
+                        <h3>Brocas Faca Reta</h3>
+                        <p>Utilizada na usinagem de materiais não ferrosos, como latão, alumínio, ferro fundido, entre outros.</p>
+                        <ul class="specs-list">
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Geometria especial para materiais não ferrosos</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Canais retos para evacuação rápida de cavacos</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Reduz a formação de rebarbas em materiais macios</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Excelente acabamento superficial</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="tab-pane fade" id="tecnicas">
+                        <h3>Características Técnicas</h3>
+                        <ul class="specs-list">
+                            <li>
+                                <i class="fas fa-industry"></i>
+                                <span>Brocas especiais sob desenho e Standard</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-tools"></i>
+                                <span>Fabricadas em Metal Duro (Carbide) e HSS (High Speed Steel)</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-tint"></i>
+                                <span>Opções com ou sem refrigeração interna</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-layer-group"></i>
+                                <span>Revestimentos diversos: TiN, TiAlN, TiCN, DLC</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-ruler"></i>
+                                <span>Tolerâncias dimensionais rigorosas conforme normas DIN</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-temperature-high"></i>
+                                <span>Resistência a altas temperaturas e desgaste</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="tab-pane fade" id="aplicacoes">
+                        <h3>Aplicações</h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4>Indústria Automotiva</h4>
+                                <ul class="specs-list">
+                                    <li>
+                                        <i class="fas fa-car"></i>
+                                        <span>Usinagem de blocos de motor</span>
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-cog"></i>
+                                        <span>Fabricação de componentes de transmissão</span>
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-wrench"></i>
+                                        <span>Produção de peças de suspensão</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h4>Indústria Aeroespacial</h4>
+                                <ul class="specs-list">
+                                    <li>
+                                        <i class="fas fa-plane"></i>
+                                        <span>Furação de ligas especiais</span>
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-rocket"></i>
+                                        <span>Componentes de turbinas</span>
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-satellite"></i>
+                                        <span>Estruturas aeronáuticas</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container-modern">
+            <h2 data-aos="fade-up">Precisa de uma Solução Personalizada?</h2>
+            <p data-aos="fade-up" data-aos-delay="100">
+                Nossa equipe técnica está pronta para desenvolver a ferramenta ideal para sua aplicação
+            </p>
+            <div data-aos="fade-up" data-aos-delay="200">
+                <a href="contact.html" class="btn btn-light btn-lg px-5 py-3">
+                    <i class="fas fa-comments"></i> Fale com um Especialista
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Products -->
+    <section class="related-products">
+        <div class="container-modern">
+            <div class="section-title">
+                <h2>Produtos Relacionados</h2>
+                <p>Conheça outras ferramentas da nossa linha</p>
+            </div>
+            
+            <div class="product-carousel">
+                <a href="alargadores.html" class="related-product-card" data-aos="fade-up">
+                    <img src="img/alargador-home.jpg" alt="Alargadores">
+                    <div class="related-product-info">
+                        <h4>Alargadores</h4>
+                        <p>Precisão no acabamento de furos</p>
+                    </div>
+                </a>
+                
+                <a href="micro-brocas.html" class="related-product-card" data-aos="fade-up" data-aos-delay="100">
+                    <img src="img/mini-brocas-home.jpg" alt="Micro Brocas">
+                    <div class="related-product-info">
+                        <h4>Micro Brocas</h4>
+                        <p>Para trabalhos de alta precisão</p>
+                    </div>
+                </a>
+                
+                <a href="brocas-alargadoras.html" class="related-product-card" data-aos="fade-up" data-aos-delay="200">
+                    <img src="img/brocas-alargadoras-home.jpg" alt="Brocas Alargadoras">
+                    <div class="related-product-info">
+                        <h4>Brocas Alargadoras</h4>
+                        <p>Duas operações em uma ferramenta</p>
+                    </div>
+                </a>
+                
+                <a href="fresas-topo.html" class="related-product-card" data-aos="fade-up" data-aos-delay="300">
+                    <img src="img/fresas-topo-home.jpg" alt="Fresas de Topo">
+                    <div class="related-product-info">
+                        <h4>Fresas de Topo</h4>
+                        <p>Para fresamento de precisão</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img src="" alt="Product Image" id="lightboxImage">
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>Swisstool</h3>
+                    <p>Líder em ferramentas de precisão desde 1980, oferecendo soluções inovadoras para a indústria.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="empresa.html">Sobre Nós</a></li>
+                        <li><a href="produtos.html">Produtos</a></li>
+                        <li><a href="servicos.html">Serviços</a></li>
+                        <li><a href="contact.html">Contato</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Produtos</h4>
+                    <ul>
+                        <li><a href="brocas.html">Brocas</a></li>
+                        <li><a href="fresas-topo.html">Fresas</a></li>
+                        <li><a href="alargadores.html">Alargadores</a></li>
+                        <li><a href="ferramentas-perfil.html">Ferramentas Especiais</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Contato</h4>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> (19) 3651-3459</li>
+                        <li><i class="fas fa-envelope"></i> swisstool@swisstool.com.br</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Espírito Santo do Pinhal - SP</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Swisstool. Todos os direitos reservados. | Desenvolvido com <i class="fas fa-heart" style="color: var(--primary);"></i> por Swisstool Team</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar-modern');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Gallery functions
+        function changeImage(src, thumb) {
+            document.getElementById('mainImage').src = src;
+            document.querySelectorAll('.gallery-thumb').forEach(t => t.classList.remove('active'));
+            thumb.classList.add('active');
+        }
+
+        // Lightbox functions
+        function openLightbox(src) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightboxImage');
+            lightboxImage.src = src;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Prevent lightbox image click from closing
+        document.getElementById('lightboxImage').addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+    </script>
+
+    <!-- Google Analytics -->
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-45120615-7', 'auto');
+        ga('send', 'pageview');
+    </script>
+</body>
+</html>

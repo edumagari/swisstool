@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Swisstool - Ferramentas de precisão com tecnologia Suíça. Líder em fabricação de ferramentas industriais desde 1995.">
+    <meta name="keywords" content="ferramentas, precisão, industrial, CNC, brocas, fresas, alargadores">
+    <meta name="author" content="Swisstool">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="img/favicon.jpg">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.jpg">
+    
+    <title>Swisstool | Ferramentas de Precisão com Tecnologia Suíça</title>
+    
+    <!-- Modern CSS Framework -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary: #8c2624;
+            --primary-dark: #6a1c1a;
+            --primary-light: #b53532;
+            --secondary: #1a1a1a;
+            --accent: #f4f4f4;
+            --text-dark: #2c2c2c;
+            --text-light: #666666;
+            --white: #ffffff;
+            --gradient: linear-gradient(135deg, #8c2624 0%, #b53532 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+        
+        /* Modern Navigation */
+        .navbar-modern {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+            padding: 1rem 0;
+        }
+        
+        .navbar-modern.scrolled {
+            padding: 0.5rem 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .logo img {
+            height: 40px;
+            margin-right: 1rem;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+        }
+        
+        .nav-link {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .nav-cta {
+            background: var(--gradient);
+            color: white !important;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+        }
+        
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(140, 38, 36, 0.3);
+        }
+        
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-dark);
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+        
+        /* Hero Section */
+        .hero {
+            margin-top: 70px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+            overflow: hidden;
+        }
+        
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero-content p {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn-primary-custom {
+            background: var(--gradient);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary-custom:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(140, 38, 36, 0.3);
+        }
+        
+        .btn-secondary-custom {
+            background: transparent;
+            color: var(--primary);
+            padding: 1rem 2rem;
+            border: 2px solid var(--primary);
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary-custom:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .hero-image {
+            position: relative;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.15);
+        }
+        
+        .floating-card {
+            position: absolute;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .floating-card-1 {
+            top: 20%;
+            right: -50px;
+        }
+        
+        .floating-card-2 {
+            bottom: 20%;
+            left: -50px;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+        }
+        
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+        
+        .section-header p {
+            font-size: 1.125rem;
+            color: var(--text-light);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid #e0e0e0;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.12);
+        }
+        
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, rgba(140, 38, 36, 0.1) 0%, rgba(181, 53, 50, 0.1) 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            color: var(--primary);
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+        
+        .feature-card p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        /* Products Showcase */
+        .products-showcase {
+            padding: 100px 0;
+            background: linear-gradient(180deg, #f8f8f8 0%, #ffffff 100%);
+        }
+        
+        .products-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .products-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .tab-btn {
+            padding: 0.75rem 1.5rem;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .tab-btn.active {
+            background: var(--gradient);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .product-card {
+            transition: all 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+        }
+        
+        .product-card.hide {
+            opacity: 0;
+            transform: scale(0.8);
+            position: absolute;
+            pointer-events: none;
+        }
+        
+        .product-card.show {
+            opacity: 1;
+            transform: scale(1);
+            animation: fadeInScale 0.5s ease;
+        }
+        
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .product-image {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--gradient);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-info h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+        
+        .product-info p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+        
+        .product-link {
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s ease;
+        }
+        
+        .product-link:hover {
+            gap: 1rem;
+        }
+        
+        /* Statistics Section */
+        .statistics {
+            padding: 100px 0;
+            background: var(--gradient);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .statistics::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 30s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .stat-card {
+            text-align: center;
+            color: white;
+        }
+        
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1.25rem;
+            opacity: 0.9;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        .cta-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem;
+            background: linear-gradient(135deg, #f8f8f8 0%, #e8e8e8 100%);
+            border-radius: 30px;
+            text-align: center;
+        }
+        
+        .cta-container h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+        
+        .cta-container p {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--secondary);
+            color: white;
+            padding: 80px 0 30px;
+        }
+        
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-brand h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-brand p {
+            color: rgba(255,255,255,0.7);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-column h4 {
+            margin-bottom: 1.5rem;
+            font-size: 1.125rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-column ul li a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            color: rgba(255,255,255,0.5);
+        }
+        
+        /* Responsive */
+        @media (max-width: 968px) {
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background: white;
+                width: 100%;
+                padding: 2rem;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                transition: 0.3s;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar-modern" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <img src="img/logo.jpg" alt="Swisstool">
+                SWISSTOOL
+            </a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#sobre" class="nav-link">Sobre</a></li>
+                <li><a href="#produtos" class="nav-link">Produtos</a></li>
+                <li><a href="#servicos" class="nav-link">Serviços</a></li>
+                <li><a href="contact.html" class="nav-link nav-cta">Contato</a></li>
+            </ul>
+            <div class="mobile-menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content" data-aos="fade-right">
+                <h1>Precisão Suíça em Ferramentas Industriais</h1>
+                <p>Há mais de 25 anos transformando a indústria brasileira com ferramentas de alta performance e tecnologia de ponta.</p>
+                <div class="hero-buttons">
+                    <a href="#produtos" class="btn-primary-custom">Ver Produtos</a>
+                    <a href="empresa.html" class="btn-secondary-custom">Nossa História</a>
+                </div>
+            </div>
+            <div class="hero-image" data-aos="fade-left">
+                <img src="img/slide1.jpg" alt="Ferramentas Swisstool">
+                <div class="floating-card floating-card-1">
+                    <h4>+25 Anos</h4>
+                    <p>de Experiência</p>
+                </div>
+                <div class="floating-card floating-card-2">
+                    <h4>100%</h4>
+                    <p>Qualidade Garantida</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="sobre">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Por que escolher a Swisstool?</h2>
+            <p>Combinamos tradição suíça com inovação brasileira para entregar as melhores soluções em ferramentas industriais</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-icon">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <h3>Tecnologia CNC Avançada</h3>
+                <p>Máquinas de última geração garantem precisão micrométrica em cada ferramenta produzida.</p>
+            </div>
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-icon">
+                    <i class="fas fa-certificate"></i>
+                </div>
+                <h3>Qualidade Certificada</h3>
+                <p>Processos rigorosos de controle de qualidade seguindo padrões internacionais ISO.</p>
+            </div>
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="feature-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>Suporte Especializado</h3>
+                <p>Equipe técnica experiente para auxiliar na escolha e aplicação ideal das ferramentas.</p>
+            </div>
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="feature-icon">
+                    <i class="fas fa-shipping-fast"></i>
+                </div>
+                <h3>Entrega Rápida</h3>
+                <p>Logística eficiente para atender suas necessidades com agilidade em todo Brasil.</p>
+            </div>
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="500">
+                <div class="feature-icon">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <h3>Customização</h3>
+                <p>Desenvolvemos ferramentas especiais sob medida para suas aplicações específicas.</p>
+            </div>
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="600">
+                <div class="feature-icon">
+                    <i class="fas fa-award"></i>
+                </div>
+                <h3>Garantia Total</h3>
+                <p>Confiança absoluta na qualidade com garantia estendida em todos os produtos.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Showcase -->
+    <section class="products-showcase" id="produtos">
+        <div class="products-container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Nossa Linha de Produtos</h2>
+                <p>Ferramentas de precisão para todos os segmentos industriais</p>
+            </div>
+            
+            <div class="products-tabs" data-aos="fade-up">
+                <button class="tab-btn active" data-filter="all">Todos</button>
+                <button class="tab-btn" data-filter="brocas">Brocas</button>
+                <button class="tab-btn" data-filter="fresas">Fresas</button>
+                <button class="tab-btn" data-filter="alargadores">Alargadores</button>
+                <button class="tab-btn" data-filter="especiais">Especiais</button>
+            </div>
+            
+            <div class="products-grid" id="products-grid">
+                <div class="product-card" data-category="brocas" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="product-image">
+                        <img src="img/brocas-home.jpg" alt="Brocas">
+                        <span class="product-badge">Mais Vendido</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Brocas de Precisão</h3>
+                        <p>Alta performance em furação com tolerâncias rigorosas</p>
+                        <a href="brocas.html" class="product-link">
+                            Ver Detalhes <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="product-card" data-category="fresas" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="product-image">
+                        <img src="img/fresas-topo-home.jpg" alt="Fresas">
+                        <span class="product-badge">Premium</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Fresas de Topo</h3>
+                        <p>Usinagem eficiente com acabamento superior</p>
+                        <a href="fresas-topo.html" class="product-link">
+                            Ver Detalhes <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="product-card" data-category="alargadores" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="product-image">
+                        <img src="img/alargador-home.jpg" alt="Alargadores">
+                    </div>
+                    <div class="product-info">
+                        <h3>Alargadores</h3>
+                        <p>Precisão dimensional em acabamento de furos</p>
+                        <a href="alargadores.html" class="product-link">
+                            Ver Detalhes <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="product-card" data-category="brocas" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="product-image">
+                        <img src="img/mini-brocas-home.jpg" alt="Micro Brocas">
+                        <span class="product-badge">Novidade</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Micro Brocas</h3>
+                        <p>Soluções para micro usinagem de precisão</p>
+                        <a href="micro-brocas.html" class="product-link">
+                            Ver Detalhes <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="product-card" data-category="especiais" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="product-image">
+                        <img src="img/serras-circulares-home.jpg" alt="Serras">
+                    </div>
+                    <div class="product-info">
+                        <h3>Serras Circulares</h3>
+                        <p>Corte preciso e durabilidade excepcional</p>
+                        <a href="serras-circulares.html" class="product-link">
+                            Ver Detalhes <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="product-card" data-category="especiais" data-aos="zoom-in" data-aos-delay="600">
+                    <div class="product-image">
+                        <img src="img/ferramentas-perfil-home.jpg" alt="Ferramentas Perfil">
+                    </div>
+                    <div class="product-info">
+                        <h3>Ferramentas de Perfil</h3>
+                        <p>Soluções customizadas para perfis especiais</p>
+                        <a href="ferramentas-perfil.html" class="product-link">
+                            Ver Detalhes <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Adding more products for better filtering demonstration -->
+                <div class="product-card" data-category="fresas" data-aos="zoom-in" data-aos-delay="700">
+                    <div class="product-image">
+                        <img src="img/fresas-circulares-home.jpg" alt="Fresas Circulares">
+                    </div>
+                    <div class="product-info">
+                        <h3>Fresas Circulares</h3>
+                        <p>Ferramentas para corte circular de precisão</p>
+                        <a href="fresas-circulares.html" class="product-link">
+                            Ver Detalhes <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="product-card" data-category="fresas" data-aos="zoom-in" data-aos-delay="800">
+                    <div class="product-image">
+                        <img src="img/fresas-woodruff-home.jpg" alt="Fresas Woodruff">
+                    </div>
+                    <div class="product-info">
+                        <h3>Fresas Woodruff</h3>
+                        <p>Ideal para chavetas e rasgos especiais</p>
+                        <a href="fresas-woodruff.html" class="product-link">
+                            Ver Detalhes <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="product-card" data-category="especiais" data-aos="zoom-in" data-aos-delay="900">
+                    <div class="product-image">
+                        <img src="img/puncoes-home.jpg" alt="Punções">
+                    </div>
+                    <div class="product-info">
+                        <h3>Punções</h3>
+                        <p>Ferramentas especiais para marcação e perfuração</p>
+                        <a href="puncoes.html" class="product-link">
+                            Ver Detalhes <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="product-card" data-category="alargadores" data-aos="zoom-in" data-aos-delay="1000">
+                    <div class="product-image">
+                        <img src="img/brocas-alargadoras-home.jpg" alt="Brocas Alargadoras">
+                    </div>
+                    <div class="product-info">
+                        <h3>Brocas Alargadoras</h3>
+                        <p>Combinação de furação e alargamento em uma única ferramenta</p>
+                        <a href="brocas-alargadoras.html" class="product-link">
+                            Ver Detalhes <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics -->
+    <section class="statistics">
+        <div class="stats-grid">
+            <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="stat-number" data-counter="25">0</div>
+                <div class="stat-label">Anos de Experiência</div>
+            </div>
+            <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="stat-number" data-counter="5000">0</div>
+                <div class="stat-label">Clientes Satisfeitos</div>
+            </div>
+            <div class="stat-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="stat-number" data-counter="50000">0</div>
+                <div class="stat-label">Produtos Entregues</div>
+            </div>
+            <div class="stat-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="stat-number" data-counter="100">0</div>
+                <div class="stat-label">% Qualidade Garantida</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-container" data-aos="zoom-in">
+            <h2>Pronto para Elevar sua Produção?</h2>
+            <p>Entre em contato conosco e descubra como nossas ferramentas podem otimizar seus processos industriais</p>
+            <a href="contact.html" class="btn-primary-custom">Solicitar Orçamento</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>SWISSTOOL</h3>
+                    <p>Desde 1995 fabricando ferramentas de precisão com tecnologia Suíça, atendendo os mais diversos segmentos da indústria nacional.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="empresa.html">Sobre Nós</a></li>
+                        <li><a href="produtos.html">Produtos</a></li>
+                        <li><a href="servicos.html">Serviços</a></li>
+                        <li><a href="contact.html">Contato</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Produtos</h4>
+                    <ul>
+                        <li><a href="brocas.html">Brocas</a></li>
+                        <li><a href="fresas-topo.html">Fresas</a></li>
+                        <li><a href="alargadores.html">Alargadores</a></li>
+                        <li><a href="serras-circulares.html">Serras</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Contato</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Espírito Santo do Pinhal/SP</li>
+                        <li><i class="fas fa-phone"></i> (19) 3651-3459</li>
+                        <li><i class="fas fa-envelope"></i> swisstool@swisstool.com.br</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Swisstool. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+        
+        // Mobile Menu Toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+        
+        mobileMenu.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+        
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Counter Animation
+        const counters = document.querySelectorAll('[data-counter]');
+        const speed = 200;
+        
+        const countUp = () => {
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-counter');
+                    const count = +counter.innerText;
+                    const inc = target / speed;
+                    
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + inc);
+                        setTimeout(updateCount, 1);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                updateCount();
+            });
+        };
+        
+        // Trigger counter on scroll
+        let counted = false;
+        window.addEventListener('scroll', () => {
+            const statsSection = document.querySelector('.statistics');
+            const scrollPos = window.scrollY + window.innerHeight;
+            const sectionPos = statsSection.offsetTop + statsSection.offsetHeight / 2;
+            
+            if (scrollPos > sectionPos && !counted) {
+                countUp();
+                counted = true;
+            }
+        });
+        
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Product Filter Functionality
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const productCards = document.querySelectorAll('.product-card');
+        const productsGrid = document.getElementById('products-grid');
+        
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active tab
+                tabBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                // Get filter value
+                const filterValue = btn.getAttribute('data-filter');
+                
+                // Filter products with animation
+                filterProducts(filterValue);
+            });
+        });
+        
+        function filterProducts(category) {
+            productCards.forEach((card, index) => {
+                const cardCategory = card.getAttribute('data-category');
+                
+                // Hide all cards first
+                card.style.opacity = '0';
+                card.style.transform = 'scale(0.9)';
+                
+                setTimeout(() => {
+                    if (category === 'all' || cardCategory === category) {
+                        // Show matching cards
+                        card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'scale(1)';
+                        }, index * 50); // Stagger animation
+                    } else {
+                        // Hide non-matching cards
+                        card.style.display = 'none';
+                    }
+                }, 300);
+            });
+            
+            // Update grid layout
+            setTimeout(() => {
+                productsGrid.style.opacity = '1';
+            }, 400);
+        }
+        
+        // Initialize all products as visible
+        productCards.forEach(card => {
+            card.style.transition = 'all 0.3s ease';
+        });
+    </script>
+</body>
+</html>

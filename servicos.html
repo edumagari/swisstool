@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Serviços Swisstool - Afiação, manutenção e desenvolvimento de ferramentas especiais">
+    <meta name="keywords" content="serviços, afiação, manutenção, ferramentas especiais, consultoria">
+    <title>Serviços | Swisstool - Soluções Completas</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="img/favicon.jpg">
+    
+    <!-- Modern CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="css/global-modern.css" rel="stylesheet">
+    
+    <style>
+        /* Services Page Specific Styles */
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            height: 100%;
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .service-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, rgba(140, 38, 36, 0.1) 0%, rgba(181, 53, 50, 0.1) 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            font-size: 3rem;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(5deg);
+            background: var(--gradient);
+            color: white;
+        }
+        
+        .service-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 1.5rem;
+        }
+        
+        .service-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .service-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .service-list li i {
+            color: var(--primary);
+            margin-right: 1rem;
+            font-size: 1.25rem;
+        }
+        
+        .process-timeline {
+            position: relative;
+            padding: 3rem 0;
+        }
+        
+        .process-step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .process-step::after {
+            content: '';
+            position: absolute;
+            left: 50px;
+            top: 100px;
+            bottom: -50px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary) 0%, transparent 100%);
+        }
+        
+        .process-step:last-child::after {
+            display: none;
+        }
+        
+        .process-number {
+            width: 100px;
+            height: 100px;
+            background: var(--gradient);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            flex-shrink: 0;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .process-content {
+            margin-left: 2rem;
+            flex: 1;
+        }
+        
+        .process-content h3 {
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .pricing-card.featured {
+            border-color: var(--primary);
+            transform: scale(1.05);
+        }
+        
+        .pricing-card.featured::before {
+            content: 'MAIS POPULAR';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gradient);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+        
+        .pricing-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .pricing-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+        
+        .pricing-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 2rem;
+        }
+        
+        .pricing-features li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .faq-accordion .accordion-item {
+            border: none;
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .faq-accordion .accordion-button {
+            background: white;
+            color: var(--text-dark);
+            font-weight: 600;
+            padding: 1.25rem;
+            box-shadow: none;
+        }
+        
+        .faq-accordion .accordion-button:not(.collapsed) {
+            background: linear-gradient(135deg, rgba(140, 38, 36, 0.05) 0%, rgba(181, 53, 50, 0.05) 100%);
+            color: var(--primary);
+        }
+        
+        .faq-accordion .accordion-button::after {
+            filter: none;
+        }
+        
+        .faq-accordion .accordion-body {
+            padding: 1.25rem;
+            color: var(--text-light);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar-modern" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="img/logo.jpg" alt="Swisstool">
+                SWISSTOOL
+            </a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="empresa.html" class="nav-link">Empresa</a></li>
+                <li><a href="produtos.html" class="nav-link">Produtos</a></li>
+                <li><a href="servicos.html" class="nav-link active">Serviços</a></li>
+                <li><a href="contact.html" class="nav-link nav-cta">Contato</a></li>
+            </ul>
+            <div class="mobile-menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="page-header-content">
+            <h1 data-aos="fade-up">Nossos Serviços</h1>
+            <p data-aos="fade-up" data-aos-delay="100">Soluções completas em ferramentas de precisão</p>
+            <div class="breadcrumb-modern" data-aos="fade-up" data-aos-delay="200">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <span>Serviços</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Services Section -->
+    <section class="content-section">
+        <div class="container-modern">
+            <div class="section-title">
+                <h2 data-aos="fade-up">Serviços Especializados</h2>
+                <p data-aos="fade-up" data-aos-delay="100">Oferecemos uma gama completa de serviços para otimizar sua produção</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3>Afiação e Manutenção</h3>
+                        <p>Serviço especializado de afiação e recondicionamento de ferramentas, devolvendo a performance original com precisão garantida.</p>
+                        <ul class="service-list">
+                            <li><i class="fas fa-check-circle"></i> Afiação de brocas e fresas</li>
+                            <li><i class="fas fa-check-circle"></i> Recondicionamento de alargadores</li>
+                            <li><i class="fas fa-check-circle"></i> Revestimento de ferramentas</li>
+                            <li><i class="fas fa-check-circle"></i> Análise dimensional</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-drafting-compass"></i>
+                        </div>
+                        <h3>Ferramentas Especiais</h3>
+                        <p>Desenvolvimento e fabricação de ferramentas customizadas conforme desenho ou amostra do cliente, para aplicações específicas.</p>
+                        <ul class="service-list">
+                            <li><i class="fas fa-check-circle"></i> Projeto sob medida</li>
+                            <li><i class="fas fa-check-circle"></i> Prototipagem rápida</li>
+                            <li><i class="fas fa-check-circle"></i> Produção em série</li>
+                            <li><i class="fas fa-check-circle"></i> Garantia de qualidade</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h3>Consultoria Técnica</h3>
+                        <p>Análise e otimização de processos de usinagem, com recomendações técnicas para aumentar produtividade e reduzir custos.</p>
+                        <ul class="service-list">
+                            <li><i class="fas fa-check-circle"></i> Análise de processos</li>
+                            <li><i class="fas fa-check-circle"></i> Seleção de ferramentas</li>
+                            <li><i class="fas fa-check-circle"></i> Parâmetros de corte</li>
+                            <li><i class="fas fa-check-circle"></i> Treinamento técnico</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-shipping-fast"></i>
+                        </div>
+                        <h3>Logística e Entrega</h3>
+                        <p>Sistema de entrega rápida e gestão de estoque consignado para garantir disponibilidade contínua de ferramentas.</p>
+                        <ul class="service-list">
+                            <li><i class="fas fa-check-circle"></i> Entrega expressa</li>
+                            <li><i class="fas fa-check-circle"></i> Estoque consignado</li>
+                            <li><i class="fas fa-check-circle"></i> Gestão de inventário</li>
+                            <li><i class="fas fa-check-circle"></i> Rastreamento online</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="content-section bg-light">
+        <div class="container-modern">
+            <div class="section-title">
+                <h2 data-aos="fade-up">Como Trabalhamos</h2>
+                <p data-aos="fade-up" data-aos-delay="100">Nosso processo garante qualidade e eficiência em cada etapa</p>
+            </div>
+            
+            <div class="process-timeline">
+                <div class="process-step" data-aos="fade-right">
+                    <div class="process-number">01</div>
+                    <div class="process-content">
+                        <h3>Análise de Necessidade</h3>
+                        <p>Avaliamos detalhadamente sua aplicação e requisitos técnicos para identificar a melhor solução.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step" data-aos="fade-right" data-aos-delay="100">
+                    <div class="process-number">02</div>
+                    <div class="process-content">
+                        <h3>Desenvolvimento</h3>
+                        <p>Projetamos e desenvolvemos a ferramenta ideal utilizando tecnologia CAD/CAM de última geração.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step" data-aos="fade-right" data-aos-delay="200">
+                    <div class="process-number">03</div>
+                    <div class="process-content">
+                        <h3>Produção</h3>
+                        <p>Fabricação com máquinas CNC de alta precisão, seguindo rigorosos padrões de qualidade.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step" data-aos="fade-right" data-aos-delay="300">
+                    <div class="process-number">04</div>
+                    <div class="process-content">
+                        <h3>Controle de Qualidade</h3>
+                        <p>Inspeção dimensional completa e testes de performance antes da liberação.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step" data-aos="fade-right" data-aos-delay="400">
+                    <div class="process-number">05</div>
+                    <div class="process-content">
+                        <h3>Entrega e Suporte</h3>
+                        <p>Entrega rápida com acompanhamento técnico e suporte pós-venda especializado.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="content-section">
+        <div class="container-modern">
+            <div class="section-title">
+                <h2 data-aos="fade-up">Planos de Serviço</h2>
+                <p data-aos="fade-up" data-aos-delay="100">Escolha o plano ideal para sua empresa</p>
+            </div>
+            
+            <div class="row g-4 align-items-center">
+                <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="pricing-card">
+                        <div class="pricing-icon">
+                            <i class="fas fa-cube"></i>
+                        </div>
+                        <h3 class="pricing-title">Básico</h3>
+                        <div class="pricing-price">Sob Consulta</div>
+                        <ul class="pricing-features">
+                            <li>Afiação de ferramentas</li>
+                            <li>Prazo padrão de entrega</li>
+                            <li>Suporte por email</li>
+                            <li>Garantia básica</li>
+                        </ul>
+                        <a href="contact.html" class="btn-secondary-custom">Solicitar Orçamento</a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="pricing-card featured">
+                        <div class="pricing-icon">
+                            <i class="fas fa-cubes"></i>
+                        </div>
+                        <h3 class="pricing-title">Profissional</h3>
+                        <div class="pricing-price">Sob Consulta</div>
+                        <ul class="pricing-features">
+                            <li>Todos os serviços básicos</li>
+                            <li>Ferramentas especiais</li>
+                            <li>Entrega expressa</li>
+                            <li>Consultoria técnica</li>
+                            <li>Suporte prioritário</li>
+                        </ul>
+                        <a href="contact.html" class="btn-primary-custom">Solicitar Orçamento</a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="pricing-card">
+                        <div class="pricing-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3 class="pricing-title">Enterprise</h3>
+                        <div class="pricing-price">Personalizado</div>
+                        <ul class="pricing-features">
+                            <li>Solução completa</li>
+                            <li>Estoque consignado</li>
+                            <li>Gestor de conta dedicado</li>
+                            <li>SLA personalizado</li>
+                            <li>Treinamento on-site</li>
+                        </ul>
+                        <a href="contact.html" class="btn-secondary-custom">Falar com Consultor</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="content-section bg-light">
+        <div class="container-modern">
+            <div class="section-title">
+                <h2 data-aos="fade-up">Perguntas Frequentes</h2>
+                <p data-aos="fade-up" data-aos-delay="100">Tire suas dúvidas sobre nossos serviços</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="accordion faq-accordion" id="faqAccordion" data-aos="fade-up" data-aos-delay="200">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                    Qual o prazo de entrega para ferramentas especiais?
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    O prazo varia de acordo com a complexidade do projeto, mas geralmente entregamos ferramentas especiais entre 15 a 30 dias após aprovação do desenho técnico.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                    Vocês fazem afiação de ferramentas de outras marcas?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Sim, realizamos afiação e recondicionamento de ferramentas de todas as marcas, mantendo as especificações originais ou otimizando conforme necessidade.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                    Como funciona o estoque consignado?
+                                </button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Mantemos um estoque de ferramentas em suas instalações, com faturamento apenas após o consumo. Ideal para garantir disponibilidade contínua sem imobilizar capital.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                    Oferecem treinamento para operadores?
+                                </button>
+                            </h2>
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Sim, oferecemos treinamento técnico completo sobre uso correto das ferramentas, parâmetros de corte e boas práticas de usinagem para maximizar produtividade.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="content-section">
+        <div class="container-modern text-center">
+            <h2 class="mb-3" data-aos="fade-up">Precisa de uma Solução Personalizada?</h2>
+            <p class="mb-4" data-aos="fade-up" data-aos-delay="100">Nossa equipe técnica está pronta para desenvolver a ferramenta ideal para sua aplicação</p>
+            <div data-aos="fade-up" data-aos-delay="200">
+                <a href="contact.html" class="btn-primary-custom me-3">Solicitar Orçamento</a>
+                <a href="produtos.html" class="btn-secondary-custom">Ver Produtos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>SWISSTOOL</h3>
+                    <p>Desde 1995 fabricando ferramentas de precisão com tecnologia Suíça, atendendo os mais diversos segmentos da indústria nacional.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="empresa.html">Sobre Nós</a></li>
+                        <li><a href="produtos.html">Produtos</a></li>
+                        <li><a href="servicos.html">Serviços</a></li>
+                        <li><a href="contact.html">Contato</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Produtos</h4>
+                    <ul>
+                        <li><a href="brocas.html">Brocas</a></li>
+                        <li><a href="fresas-topo.html">Fresas</a></li>
+                        <li><a href="alargadores.html">Alargadores</a></li>
+                        <li><a href="serras-circulares.html">Serras</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Contato</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Espírito Santo do Pinhal/SP</li>
+                        <li><i class="fas fa-phone"></i> (19) 3651-3459</li>
+                        <li><i class="fas fa-envelope"></i> swisstool@swisstool.com.br</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Swisstool. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+        
+        // Mobile Menu
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+        
+        mobileMenu.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+        
+        // Navbar Scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>

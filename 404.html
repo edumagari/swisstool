@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Página não encontrada - Swisstool">
+    <meta name="author" content="Swisstool">
+    
+    <link rel="apple-touch-icon" sizes="144x144" href="apple-touch-icon-144x144.jpg">
+    <link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-114x114.jpg">
+    <link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-72x72.jpg">
+    <link rel="apple-touch-icon" href="apple-touch-icon.jpg"> 
+    <link rel="shortcut icon" href="img/favicon.jpg"/>
+
+    <title>404 - Página Não Encontrada | Swisstool</title>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/global-modern.css" rel="stylesheet">
+    
+    <style>
+        .error-hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f8f8f8 0%, #e8e8e8 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .error-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(140, 38, 36, 0.03) 0%, transparent 70%);
+            animation: rotate 30s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .error-content {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            padding: 2rem;
+        }
+        
+        .error-404 {
+            font-size: clamp(8rem, 20vw, 15rem);
+            font-weight: 900;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0;
+            line-height: 1;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .error-title {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 700;
+            color: var(--text-dark);
+            margin: 2rem 0 1rem;
+        }
+        
+        .error-description {
+            font-size: 1.125rem;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .error-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .error-illustration {
+            position: absolute;
+            opacity: 0.1;
+            font-size: 30rem;
+            color: var(--primary);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+        }
+        
+        .quick-links {
+            margin-top: 3rem;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        .quick-links h3 {
+            font-size: 1.25rem;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+        }
+        
+        .link-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .link-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-decoration: none;
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .link-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            color: var(--primary);
+        }
+        
+        .link-card i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .link-card h4 {
+            font-size: 1rem;
+            margin: 0;
+        }
+        
+        .search-box {
+            max-width: 500px;
+            margin: 2rem auto;
+        }
+        
+        .search-box .input-group {
+            box-shadow: var(--shadow-md);
+            border-radius: 50px;
+            overflow: hidden;
+        }
+        
+        .search-box input {
+            border: none;
+            padding: 1rem 1.5rem;
+            font-size: 1rem;
+        }
+        
+        .search-box button {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .search-box button:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Floating elements animation */
+        .floating-gear {
+            position: absolute;
+            color: var(--primary);
+            opacity: 0.1;
+            animation: float-rotate 20s ease-in-out infinite;
+        }
+        
+        .floating-gear:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            font-size: 3rem;
+            animation-delay: 0s;
+        }
+        
+        .floating-gear:nth-child(2) {
+            top: 20%;
+            right: 15%;
+            font-size: 2rem;
+            animation-delay: 5s;
+        }
+        
+        .floating-gear:nth-child(3) {
+            bottom: 20%;
+            left: 15%;
+            font-size: 2.5rem;
+            animation-delay: 10s;
+        }
+        
+        .floating-gear:nth-child(4) {
+            bottom: 10%;
+            right: 10%;
+            font-size: 3.5rem;
+            animation-delay: 15s;
+        }
+        
+        @keyframes float-rotate {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-20px) rotate(90deg);
+            }
+            50% {
+                transform: translateY(0) rotate(180deg);
+            }
+            75% {
+                transform: translateY(20px) rotate(270deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar-modern">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="img/logo.jpg" alt="Swisstool">
+                Swisstool
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="empresa.html" class="nav-link">Empresa</a></li>
+                <li><a href="servicos.html" class="nav-link">Serviços</a></li>
+                <li><a href="produtos.html" class="nav-link">Produtos</a></li>
+                <li><a href="contact.html" class="nav-link nav-cta">Contato</a></li>
+            </ul>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Error Hero -->
+    <section class="error-hero">
+        <!-- Floating decorative elements -->
+        <i class="fas fa-cog floating-gear"></i>
+        <i class="fas fa-cog floating-gear"></i>
+        <i class="fas fa-cog floating-gear"></i>
+        <i class="fas fa-cog floating-gear"></i>
+        
+        <div class="error-content">
+            <h1 class="error-404" data-aos="zoom-in">404</h1>
+            <h2 class="error-title" data-aos="fade-up" data-aos-delay="100">
+                Oops! Página Não Encontrada
+            </h2>
+            <p class="error-description" data-aos="fade-up" data-aos-delay="200">
+                Parece que a página que você está procurando não existe ou foi movida. 
+                Não se preocupe, vamos ajudá-lo a encontrar o que precisa.
+            </p>
+            
+            <!-- Search Box -->
+            <div class="search-box" data-aos="fade-up" data-aos-delay="300">
+                <form action="#" method="get">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Buscar produtos ou informações...">
+                        <button type="submit">
+                            <i class="fas fa-search"></i> Buscar
+                        </button>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Action Buttons -->
+            <div class="error-actions" data-aos="fade-up" data-aos-delay="400">
+                <a href="index.html" class="btn-primary-custom">
+                    <i class="fas fa-home"></i> Voltar ao Início
+                </a>
+                <a href="contact.html" class="btn-secondary-custom">
+                    <i class="fas fa-headset"></i> Fale Conosco
+                </a>
+            </div>
+            
+            <!-- Quick Links -->
+            <div class="quick-links" data-aos="fade-up" data-aos-delay="500">
+                <h3>Links Úteis</h3>
+                <div class="link-grid">
+                    <a href="produtos.html" class="link-card">
+                        <i class="fas fa-tools"></i>
+                        <h4>Produtos</h4>
+                    </a>
+                    <a href="servicos.html" class="link-card">
+                        <i class="fas fa-cogs"></i>
+                        <h4>Serviços</h4>
+                    </a>
+                    <a href="empresa.html" class="link-card">
+                        <i class="fas fa-building"></i>
+                        <h4>Empresa</h4>
+                    </a>
+                    <a href="brocas.html" class="link-card">
+                        <i class="fas fa-drill"></i>
+                        <h4>Brocas</h4>
+                    </a>
+                    <a href="fresas-topo.html" class="link-card">
+                        <i class="fas fa-gear"></i>
+                        <h4>Fresas</h4>
+                    </a>
+                    <a href="alargadores.html" class="link-card">
+                        <i class="fas fa-expand"></i>
+                        <h4>Alargadores</h4>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar-modern');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Redirect to home after 30 seconds
+        setTimeout(() => {
+            console.log('Auto redirect to home page after 30 seconds of inactivity');
+        }, 30000);
+    </script>
+
+    <!-- Google Analytics -->
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-45120615-7', 'auto');
+        ga('send', 'pageview');
+    </script>
+</body>
+</html>
