@@ -228,12 +228,12 @@ body {
 }
 
 .floating-card-1 {
-    top: 20%;
+    bottom: -30%;
     right: -50px;
 }
 
 .floating-card-2 {
-    bottom: -40%;
+    bottom: -30%;
     left: -50px;
 }
 
