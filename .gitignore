@@ -1,1 +1,48 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Runtime data / cache
+.cache/
+.parcel-cache/
+.eslintcache
+
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Vite cache (sometimes created)
+.vite/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# OS & editor folders
+.DS_Store
+Thumbs.db
+.idea/
 .vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Netlify local state
+.netlify/
+
+# Temporary files
+tmp/
+temp/
+
+# Generated at build by prebuild script
+public/sitemap.xml
+
