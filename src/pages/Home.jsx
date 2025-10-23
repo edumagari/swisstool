@@ -70,6 +70,10 @@ function HeroPT({ lang }) {
             <a href="#produtos" className="btn-primary-custom">{t.seeProducts}</a>
             <a href={lang === 'en' ? '#/en/company' : lang === 'es' ? '#/es/empresa' : '#/pt/empresa'} className="btn-secondary-custom">{t.ourHistory}</a>
           </div>
+          <div className="national-badge" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginTop: '14px', padding: '8px 12px', borderRadius: '999px', background: 'rgba(140,38,36,0.08)', color: 'var(--text-dark)', fontWeight: 600 }}>
+            <span role="img" aria-label="Brazil">🇧🇷</span>
+            <span>{t.madeInBrazil}</span>
+          </div>
         </div>
         <div className="hero-image" data-aos="fade-left">
           <img src="/img/slide1.jpg" alt="Ferramentas Swisstool" />

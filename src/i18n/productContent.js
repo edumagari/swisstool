@@ -25,43 +25,43 @@ export const aliasToCanonical = {
 
 export const productContent = {
   'brocas': {
-    images: ['/img/brocas.jpg', '/img/brocas2.jpg', '/img/brocas-home.jpg'],
+    images: ['/img/prod-brocas.jpg', '/img/prod-minibrocas.jpg', '/img/prod-brocasalargadoras.jpg'],
     related: ['alargadores', 'micro-brocas', 'brocas-alargadoras', 'fresas-topo']
   },
   'fresas-topo': {
-    images: ['/img/fresas-topo-home.jpg', '/img/fresas-topo-home.jpg', '/img/fresas-circulares-home.jpg'],
+    images: ['/img/prod-fresastopo.jpg', '/img/prod-fresascirculares.jpg', '/img/prod-fresaswoodruff.jpg'],
     related: ['fresas-circulares', 'fresas-woodruff', 'brocas', 'alargadores']
   },
   'alargadores': {
-    images: ['/img/alargador-home.jpg', '/img/brocas-alargadoras-home.jpg', '/img/brocas-home.jpg'],
+    images: ['/img/prod-alargador.jpg', '/img/prod-brocasalargadoras.jpg', '/img/prod-brocas.jpg'],
     related: ['brocas', 'brocas-alargadoras', 'serras-circulares', 'ferramentas-perfil']
   },
   'micro-brocas': {
-    images: ['/img/mini-brocas-home.jpg', '/img/brocas-home.jpg', '/img/brocas2.jpg'],
+    images: ['/img/prod-minibrocas.jpg', '/img/prod-brocas.jpg', '/img/prod-fresastopo.jpg'],
     related: ['brocas', 'fresas-topo', 'fresas-circulares', 'alargadores']
   },
   'serras-circulares': {
-    images: ['/img/serras-circulares-home.jpg', '/img/serras-circulares-home.jpg', '/img/fresas-circulares-home.jpg'],
+    images: ['/img/prod-serrascirculares.jpg', '/img/prod-fresascirculares.jpg', '/img/prod-ferramentasperfil.jpg'],
     related: ['fresas-circulares', 'brocas', 'alargadores', 'ferramentas-perfil']
   },
   'ferramentas-perfil': {
-    images: ['/img/ferramentas-perfil-home.jpg', '/img/fresas-circulares-home.jpg', '/img/serras-circulares-home.jpg'],
+    images: ['/img/prod-ferramentasperfil.jpg', '/img/prod-fresascirculares.jpg', '/img/prod-serrascirculares.jpg'],
     related: ['serras-circulares', 'fresas-circulares', 'brocas', 'alargadores']
   },
   'fresas-circulares': {
-    images: ['/img/fresas-circulares-home.jpg', '/img/fresas-topo-home.jpg', '/img/serras-circulares-home.jpg'],
+    images: ['/img/prod-fresascirculares.jpg', '/img/prod-fresastopo.jpg', '/img/prod-serrascirculares.jpg'],
     related: ['serras-circulares', 'fresas-topo', 'brocas', 'alargadores']
   },
   'fresas-woodruff': {
-    images: ['/img/fresas-woodruff-home.jpg', '/img/fresas-circulares-home.jpg', '/img/fresas-topo-home.jpg'],
+    images: ['/img/prod-fresaswoodruff.jpg', '/img/prod-fresascirculares.jpg', '/img/prod-fresastopo.jpg'],
     related: ['fresas-circulares', 'fresas-topo', 'brocas', 'alargadores']
   },
   'puncoes': {
-    images: ['/img/puncoes-home-en.jpg', '/img/prod-puncoes.jpg', '/img/brocas-home.jpg'],
+    images: ['/img/prod-puncoes.jpg', '/img/prod-ferramentasperfil.jpg', '/img/prod-brocas.jpg'],
     related: ['brocas', 'ferramentas-perfil', 'fresas-circulares', 'serras-circulares']
   },
   'brocas-alargadoras': {
-    images: ['/img/brocas-alargadoras-home.jpg', '/img/alargador-home.jpg', '/img/brocas-home.jpg'],
+    images: ['/img/prod-brocasalargadoras.jpg', '/img/prod-alargador.jpg', '/img/prod-brocas.jpg'],
     related: ['brocas', 'alargadores', 'fresas-topo', 'ferramentas-perfil']
   },
 }
