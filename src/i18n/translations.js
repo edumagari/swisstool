@@ -39,6 +39,7 @@ export const translations = {
         { slug: 'fresas-woodruff', cat: 'fresas', img: '/img/prod-fresaswoodruff.jpg', title: 'Fresas Woodruff', desc: 'Ideal para chavetas e rasgos especiais' },
         { slug: 'puncoes', cat: 'especiais', img: '/img/prod-puncoes.jpg', title: 'Punções', desc: 'Ferramentas especiais para marcação e perfuração' },
         { slug: 'brocas-alargadoras', cat: 'alargadores', img: '/img/prod-brocasalargadoras.jpg', title: 'Brocas Alargadoras', desc: 'Combinação de furação e alargamento em uma única ferramenta' },
+        { slug: 'turbilhonamento', cat: 'especiais', img: '/img/prod-turbilhonamento.png', title: 'Turbilhonamento', desc: 'Whirling para roscas e perfis complexos com alta produtividade' },
       ],
     },
     products: {
@@ -49,13 +50,14 @@ export const translations = {
       searchButton: 'Buscar',
       filters: { all: 'Todos os Produtos', drills: 'Brocas', mills: 'Fresas', reamers: 'Alargadores', saws: 'Serras', special: 'Especiais' },
       items: [
-        { slug: 'brocas', cat: 'brocas', badge: 'Brocas', img: '/img/brocas-home.jpg', title: 'Brocas Helicoidais', desc: 'Brocas de alta performance para furação em diversos materiais, com geometria otimizada para máxima eficiência.', features: ['HSS', 'Metal Duro', 'Revestidas'], specs: ['Ø 0.5-20mm', 'DIN 338'] },
-        { slug: 'fresas-topo', cat: 'fresas', badge: 'Fresas', img: '/img/fresas-topo-home.jpg', title: 'Fresas de Topo', desc: 'Ferramentas versáteis para fresamento de topo, canais e contornos com excelente acabamento superficial.', features: ['2-4 Cortes', 'HSS-Co', 'AlTiN'], specs: ['Ø 1-25mm', 'DIN 844'] },
-        { slug: 'fresas-circulares', cat: 'fresas', badge: 'Fresas', img: '/img/fresas-circulares-home.jpg', title: 'Fresas Circulares', desc: 'Ideais para corte e ranhuramento, com geometria otimizada para máxima produtividade.', features: ['3 Cortes', 'HSS', 'Ranhuras'], specs: ['Ø 50-160mm', 'DIN 885'] },
-        { slug: 'fresas-woodruff', cat: 'fresas', badge: 'Fresas', img: '/img/fresas-woodruff-home.jpg', title: 'Fresas Woodruff', desc: 'Especializadas para rasgos de chaveta tipo meia-lua, com precisão dimensional garantida.', features: ['Chavetas', 'HSS', 'Precisão'], specs: ['Ø 13-32mm', 'DIN 850'] },
-        { slug: 'alargadores', cat: 'alargadores', badge: 'Alargadores', img: '/img/alargador-home.jpg', title: 'Alargadores de Precisão', desc: 'Para acabamento de furos com tolerâncias H7, garantindo precisão dimensional e acabamento superior.', features: ['H7', 'HSS', '6-12 Canais'], specs: ['Ø 3-20mm', 'DIN 212'] },
-        { slug: 'brocas-alargadoras', cat: 'alargadores', badge: 'Alargadores', img: '/img/brocas-alargadoras-home.jpg', title: 'Brocas Alargadoras', desc: 'Combinação de furação e alargamento em uma única operação, reduzindo tempo de ciclo.', features: ['2 em 1', 'Produtividade', 'HSS-E'], specs: ['Ø 4-16mm', 'Especial'] },
-        { slug: 'serras-circulares', cat: 'serras', badge: 'Serras', img: '/img/serras-circulares-home.jpg', title: 'Serras Circulares', desc: 'Corte preciso e limpo em diversos materiais, com dentes especialmente tratados para maior durabilidade.', features: ['Metal', 'Madeira', 'Plástico'], specs: ['Ø 63-315mm', 'DIN 1837'] },
+        { slug: 'brocas', cat: 'brocas', badge: 'Brocas', img: '/img/prod-brocas.jpg', title: 'Brocas Helicoidais', desc: 'Brocas de alta performance para furação em diversos materiais, com geometria otimizada para máxima eficiência.', features: ['HSS', 'Metal Duro', 'Revestidas'], specs: ['Ø 0.5-20mm', 'DIN 338'] },
+        { slug: 'fresas-topo', cat: 'fresas', badge: 'Fresas', img: '/img/prod-fresastopo.jpg', title: 'Fresas de Topo', desc: 'Ferramentas versáteis para fresamento de topo, canais e contornos com excelente acabamento superficial.', features: ['2-4 Cortes', 'HSS-Co', 'AlTiN'], specs: ['Ø 1-25mm', 'DIN 844'] },
+        { slug: 'fresas-circulares', cat: 'fresas', badge: 'Fresas', img: '/img/prod-fresascirculares.jpg', title: 'Fresas Circulares', desc: 'Ideais para corte e ranhuramento, com geometria otimizada para máxima produtividade.', features: ['3 Cortes', 'HSS', 'Ranhuras'], specs: ['Ø 50-160mm', 'DIN 885'] },
+        { slug: 'fresas-woodruff', cat: 'fresas', badge: 'Fresas', img: '/img/prod-fresaswoodruff.jpg', title: 'Fresas Woodruff', desc: 'Especializadas para rasgos de chaveta tipo meia-lua, com precisão dimensional garantida.', features: ['Chavetas', 'HSS', 'Precisão'], specs: ['Ø 13-32mm', 'DIN 850'] },
+        { slug: 'alargadores', cat: 'alargadores', badge: 'Alargadores', img: '/img/prod-alargador.jpg', title: 'Alargadores de Precisão', desc: 'Para acabamento de furos com tolerâncias H7, garantindo precisão dimensional e acabamento superior.', features: ['H7', 'HSS', '6-12 Canais'], specs: ['Ø 3-20mm', 'DIN 212'] },
+        { slug: 'brocas-alargadoras', cat: 'alargadores', badge: 'Alargadores', img: '/img/prod-brocasalargadoras.jpg', title: 'Brocas Alargadoras', desc: 'Combinação de furação e alargamento em uma única operação, reduzindo tempo de ciclo.', features: ['2 em 1', 'Produtividade', 'HSS-E'], specs: ['Ø 4-16mm', 'Especial'] },
+        { slug: 'serras-circulares', cat: 'serras', badge: 'Serras', img: '/img/prod-serrascirculares.jpg', title: 'Serras Circulares', desc: 'Corte preciso e limpo em diversos materiais, com dentes especialmente tratados para maior durabilidade.', features: ['Metal', 'Madeira', 'Plástico'], specs: ['Ø 63-315mm', 'DIN 1837'] },
+        { slug: 'turbilhonamento', cat: 'especiais', badge: 'Especiais', img: '/img/prod-turbilhonamento.png', title: 'Turbilhonamento', desc: 'Processo whirling para roscas de alta precisão e perfis complexos.', features: ['Alta Produtividade','Acabamento Superior','Excelente Forma de Rosca'], specs: ['Processo dedicado','Aplicações especiais'] },
       ],
     },
     company: {
@@ -81,15 +83,16 @@ export const translations = {
       ctaDesc: 'Entre em contato e descubra como podemos ajudar sua empresa',
       ctaContact: 'Entre em Contato',
       ctaProducts: 'Ver Produtos',
+      mapSpotTitle: 'Nossa Presença no Brasil',
+      mapSpotDesc: 'Localizados em Espírito Santo do Pinhal/SP, atendendo todo o país.'
     },
     services: {
       headerTitle: 'Nossos Serviços', headerDesc: 'Soluções completas em ferramentas de precisão',
       sectionTitle: 'Serviços Especializados', sectionDesc: 'Oferecemos uma gama completa de serviços para otimizar sua produção',
       cards: [
-        { icon: 'fas fa-tools', title: 'Afiação e Reafição', desc: 'Serviço especializado de afiação e recondicionamento de ferramentas, devolvendo a performance original com precisão garantida.' },
+        { icon: 'fas fa-tools', title: 'Afiação', desc: 'Serviço especializado de afiação de ferramentas.' },
         { icon: 'fas fa-drafting-compass', title: 'Ferramentas sob Desenho', desc: 'Desenvolvimento e fabricação de ferramentas a partir de desenhos técnicos ou amostras do cliente.' },
         { icon: 'fas fa-user-tie', title: 'Consultoria Técnica', desc: 'Análise e otimização de processos de usinagem, com recomendações técnicas para aumentar produtividade e reduzir custos.' },
-        { icon: 'fas fa-shipping-fast', title: 'Logística e Entrega', desc: 'Gestão de estoque consignado e entregas para garantir disponibilidade contínua de ferramentas.' },
       ],
       processTitle: 'Como Trabalhamos', processDesc: 'Qualidade e eficiência em cada etapa',
       processSteps: [
@@ -149,6 +152,7 @@ export const translations = {
         { slug: 'woodruff-cutters', cat: 'mills', img: '/img/fresas-woodruff-home-en.jpg', title: 'Woodruff Cutters', desc: 'Keyway cutting' },
         { slug: 'endmills', cat: 'mills', img: '/img/fresas-topo-home-en.jpg', title: 'Endmills', desc: 'Versatile milling' },
         { slug: 'punches', cat: 'special', img: '/img/puncoes-home-en.jpg', title: 'Punches', desc: 'Special marking and punching tools' },
+        { slug: 'whirling', cat: 'special', img: '/img/prod-turbilhonamento.png', title: 'Whirling', desc: 'High‑speed whirling for precise threads' },
       ],
     },
     products: {
@@ -159,13 +163,14 @@ export const translations = {
       searchButton: 'Search',
       filters: { all: 'All', drills: 'Drills', mills: 'Mills', reamers: 'Reamers', saws: 'Saws', special: 'Special' },
       items: [
-        { slug: 'drills', cat: 'drills', badge: 'Drills', img: '/img/brocas-home-en.jpg', title: 'Twist Drills', desc: 'High‑performance drilling with optimized geometry for maximum efficiency.', features: ['HSS', 'Carbide', 'Coated'], specs: ['Ø 0.5–20mm', 'DIN 338'] },
-        { slug: 'endmills', cat: 'mills', badge: 'Mills', img: '/img/fresas-topo-home-en.jpg', title: 'Endmills', desc: 'Versatile tools for contouring, slotting and finishing with excellent surface quality.', features: ['2–4 Flute', 'HSS‑Co', 'AlTiN'], specs: ['Ø 1–25mm', 'DIN 844'] },
-        { slug: 'circular-cutters', cat: 'mills', badge: 'Mills', img: '/img/fresas-circulares-home-en.jpg', title: 'Circular Cutters', desc: 'Ideal for circular cutting and grooving; optimized geometry for productivity.', features: ['3 Flute', 'HSS', 'Grooves'], specs: ['Ø 50–160mm', 'DIN 885'] },
-        { slug: 'woodruff-cutters', cat: 'mills', badge: 'Mills', img: '/img/fresas-woodruff-home-en.jpg', title: 'Woodruff Cutters', desc: 'Specialized for semicircular keyway slots with guaranteed dimensional accuracy.', features: ['Keyways', 'HSS', 'Precision'], specs: ['Ø 13–32mm', 'DIN 850'] },
-        { slug: 'reamers', cat: 'reamers', badge: 'Reamers', img: '/img/alargador-home-en.jpg', title: 'Precision Reamers', desc: 'H7‑tolerance hole finishing with superior dimensional accuracy.', features: ['H7', 'HSS', '6–12 Flute'], specs: ['Ø 3–20mm', 'DIN 212'] },
-        { slug: 'reamer-drills', cat: 'drills', badge: 'Drills', img: '/img/brocas-alargadoras-home-en.jpg', title: 'Reamer Drills', desc: 'Drilling and reaming in a single operation, reducing cycle time.', features: ['2‑in‑1', 'Productivity', 'HSS‑E'], specs: ['Ø 4–16mm', 'Special'] },
-        { slug: 'circular-saws', cat: 'special', badge: 'Special', img: '/img/serras-circulares-home-en.jpg', title: 'Carbide Circular Saws', desc: 'Clean, precise cutting on a variety of materials.', features: ['Metal', 'Wood', 'Plastic'], specs: ['Ø 63–315mm', 'DIN 1837'] },
+        { slug: 'drills', cat: 'drills', badge: 'Drills', img: '/img/prod-brocas.jpg', title: 'Twist Drills', desc: 'High‑performance drilling with optimized geometry for maximum efficiency.', features: ['HSS', 'Carbide', 'Coated'], specs: ['Ø 0.5–20mm', 'DIN 338'] },
+        { slug: 'endmills', cat: 'mills', badge: 'Mills', img: '/img/prod-fresastopo.jpg', title: 'Endmills', desc: 'Versatile tools for contouring, slotting and finishing with excellent surface quality.', features: ['2–4 Flute', 'HSS‑Co', 'AlTiN'], specs: ['Ø 1–25mm', 'DIN 844'] },
+        { slug: 'circular-cutters', cat: 'mills', badge: 'Mills', img: '/img/prod-fresascirculares.jpg', title: 'Circular Cutters', desc: 'Ideal for circular cutting and grooving; optimized geometry for productivity.', features: ['3 Flute', 'HSS', 'Grooves'], specs: ['Ø 50–160mm', 'DIN 885'] },
+        { slug: 'woodruff-cutters', cat: 'mills', badge: 'Mills', img: '/img/prod-fresaswoodruff.jpg', title: 'Woodruff Cutters', desc: 'Specialized for semicircular keyway slots with guaranteed dimensional accuracy.', features: ['Keyways', 'HSS', 'Precision'], specs: ['Ø 13–32mm', 'DIN 850'] },
+        { slug: 'reamers', cat: 'reamers', badge: 'Reamers', img: '/img/prod-alargador.jpg', title: 'Precision Reamers', desc: 'H7‑tolerance hole finishing with superior dimensional accuracy.', features: ['H7', 'HSS', '6–12 Flute'], specs: ['Ø 3–20mm', 'DIN 212'] },
+        { slug: 'reamer-drills', cat: 'drills', badge: 'Drills', img: '/img/prod-brocasalargadoras.jpg', title: 'Reamer Drills', desc: 'Drilling and reaming in a single operation, reducing cycle time.', features: ['2‑in‑1', 'Productivity', 'HSS‑E'], specs: ['Ø 4–16mm', 'Special'] },
+        { slug: 'circular-saws', cat: 'special', badge: 'Special', img: '/img/prod-serrascirculares.jpg', title: 'Carbide Circular Saws', desc: 'Clean, precise cutting on a variety of materials.', features: ['Metal', 'Wood', 'Plastic'], specs: ['Ø 63–315mm', 'DIN 1837'] },
+        { slug: 'whirling', cat: 'special', badge: 'Special', img: '/img/prod-turbilhonamento.png', title: 'Whirling', desc: 'Whirling process for high‑precision threads and complex profiles.', features: ['High Productivity','Superior Finish','Accurate Thread Form'], specs: ['Dedicated process','Special applications'] },
       ]
     },
     company: {
@@ -184,16 +189,17 @@ export const translations = {
       ],
       infraTitle: 'Modern Infrastructure', infraLead: 'State‑of‑the‑art facilities for high‑precision tool manufacturing.',
       infraBullets: ['5,000 m² factory area', 'Latest‑generation CNC machines', 'Equipped metrology lab', 'Product development center', 'Certified quality system'],
-      ctaTitle: 'Join Our Story', ctaDesc: 'Contact us to see how we can help your company', ctaContact: 'Contact Us', ctaProducts: 'View Products'
+      ctaTitle: 'Join Our Story', ctaDesc: 'Contact us to see how we can help your company', ctaContact: 'Contact Us', ctaProducts: 'View Products',
+      mapSpotTitle: 'Our Presence in Brazil',
+      mapSpotDesc: 'Based in Espírito Santo do Pinhal/SP, serving the entire country.'
     },
     services: {
       headerTitle: 'Our Services', headerDesc: 'Complete solutions in precision tools',
       sectionTitle: 'Specialized Services', sectionDesc: 'A full range of services to optimize your production',
       cards: [
-        { icon: 'fas fa-tools', title: 'Sharpening & Reconditioning', desc: 'Specialized sharpening restoring original performance with guaranteed precision.' },
+        { icon: 'fas fa-tools', title: 'Sharpening', desc: 'Specialized sharpening of tools.' },
         { icon: 'fas fa-drafting-compass', title: 'Custom Tools', desc: 'Development and manufacturing based on drawings or samples.' },
         { icon: 'fas fa-user-tie', title: 'Technical Consulting', desc: 'Process analysis with recommendations to increase productivity and reduce costs.' },
-        { icon: 'fas fa-shipping-fast', title: 'Logistics & Delivery', desc: 'Consignment stock and delivery management for continuous availability.' },
       ],
       processTitle: 'How We Work', processDesc: 'Quality and efficiency at each step',
       processSteps: [
@@ -243,6 +249,7 @@ export const translations = {
         { slug: 'woodruff-cutters', cat: 'fresas', img: '/img/prod-fresaswoodruff.jpg', title: 'Fresas Woodruff', desc: 'Ideal para chaveteros y ranuras especiales' },
         { slug: 'punches', cat: 'especiales', img: '/img/prod-puncoes.jpg', title: 'Punzones', desc: 'Herramientas especiales para marcado y perforación' },
         { slug: 'reamer-drills', cat: 'escariadores', img: '/img/prod-brocasalargadoras.jpg', title: 'Brocas Escariadoras', desc: 'Perforación y escariado en una sola herramienta' },
+        { slug: 'whirling', cat: 'especiales', img: '/img/prod-turbilhonamento.png', title: 'Turbillonado (Whirling)', desc: 'Whirling para roscas de alta precisión' },
       ],
       ctaTitle: '¿Listo para elevar su producción?',
       ctaDesc: 'Contáctenos y descubra cómo nuestras herramientas optimizan sus procesos',
@@ -260,13 +267,14 @@ export const translations = {
       searchPlaceholder: 'Escriba el nombre o código del producto...', searchButton: 'Buscar',
       filters: { all: 'Todos', drills: 'Brocas', mills: 'Fresas', reamers: 'Escariadores', saws: 'Sierras', special: 'Especiales' },
       items: [
-        { slug: 'drills', cat: 'brocas', badge: 'Brocas', img: '/img/brocas-home.jpg', title: 'Brocas Helicoidales', desc: 'Perforación de alto rendimiento con geometría optimizada para máxima eficiencia.', features: ['HSS', 'Carburo', 'Revestidas'], specs: ['Ø 0.5-20mm', 'DIN 338'] },
-        { slug: 'endmills', cat: 'fresas', badge: 'Fresas', img: '/img/fresas-topo-home.jpg', title: 'Fresas de Extremo', desc: 'Herramientas versátiles para contornos, ranuras y acabado con excelente calidad superficial.', features: ['2-4 Cortes', 'HSS-Co', 'AlTiN'], specs: ['Ø 1-25mm', 'DIN 844'] },
-        { slug: 'circular-cutters', cat: 'fresas', badge: 'Fresas', img: '/img/fresas-circulares-home.jpg', title: 'Fresas Circulares', desc: 'Ideales para corte y ranurado, con geometría optimizada para alta productividad.', features: ['3 Cortes', 'HSS', 'Ranuras'], specs: ['Ø 50-160mm', 'DIN 885'] },
-        { slug: 'woodruff-cutters', cat: 'fresas', badge: 'Fresas', img: '/img/fresas-woodruff-home.jpg', title: 'Fresas Woodruff', desc: 'Especializadas para ranuras de chaveta tipo media luna, con precisión dimensional.', features: ['Chavetas', 'HSS', 'Precisión'], specs: ['Ø 13-32mm', 'DIN 850'] },
-        { slug: 'reamers', cat: 'escariadores', badge: 'Escariadores', img: '/img/alargador-home.jpg', title: 'Escariadores de Precisión', desc: 'Acabado de agujeros con tolerancia H7 y excelente precisión dimensional.', features: ['H7', 'HSS', '6-12 Canales'], specs: ['Ø 3-20mm', 'DIN 212'] },
-        { slug: 'reamer-drills', cat: 'escariadores', badge: 'Escariadores', img: '/img/brocas-alargadoras-home.jpg', title: 'Brocas Escariadoras', desc: 'Perforación y escariado en una sola operación, reduciendo tiempo de ciclo.', features: ['2 en 1', 'Productividad', 'HSS-E'], specs: ['Ø 4-16mm', 'Especial'] },
-        { slug: 'circular-saws', cat: 'sierras', badge: 'Sierras', img: '/img/serras-circulares-home.jpg', title: 'Sierras Circulares', desc: 'Corte limpio y preciso en varios materiales.', features: ['Metal', 'Madera', 'Plástico'], specs: ['Ø 63-315mm', 'DIN 1837'] },
+        { slug: 'drills', cat: 'brocas', badge: 'Brocas', img: '/img/prod-brocas.jpg', title: 'Brocas Helicoidales', desc: 'Perforación de alto rendimiento con geometría optimizada para máxima eficiencia.', features: ['HSS', 'Carburo', 'Revestidas'], specs: ['Ø 0.5-20mm', 'DIN 338'] },
+        { slug: 'endmills', cat: 'fresas', badge: 'Fresas', img: '/img/prod-fresastopo.jpg', title: 'Fresas de Extremo', desc: 'Herramientas versátiles para contornos, ranuras y acabado con excelente calidad superficial.', features: ['2-4 Cortes', 'HSS-Co', 'AlTiN'], specs: ['Ø 1-25mm', 'DIN 844'] },
+        { slug: 'circular-cutters', cat: 'fresas', badge: 'Fresas', img: '/img/prod-fresascirculares.jpg', title: 'Fresas Circulares', desc: 'Ideales para corte y ranurado, con geometría optimizada para alta productividad.', features: ['3 Cortes', 'HSS', 'Ranuras'], specs: ['Ø 50-160mm', 'DIN 885'] },
+        { slug: 'woodruff-cutters', cat: 'fresas', badge: 'Fresas', img: '/img/prod-fresaswoodruff.jpg', title: 'Fresas Woodruff', desc: 'Especializadas para ranuras de chaveta tipo media luna, con precisión dimensional.', features: ['Chavetas', 'HSS', 'Precisión'], specs: ['Ø 13-32mm', 'DIN 850'] },
+        { slug: 'reamers', cat: 'escariadores', badge: 'Escariadores', img: '/img/prod-alargador.jpg', title: 'Escariadores de Precisión', desc: 'Acabado de agujeros con tolerancia H7 y excelente precisión dimensional.', features: ['H7', 'HSS', '6-12 Canales'], specs: ['Ø 3-20mm', 'DIN 212'] },
+        { slug: 'reamer-drills', cat: 'escariadores', badge: 'Escariadores', img: '/img/prod-brocasalargadoras.jpg', title: 'Brocas Escariadoras', desc: 'Perforación y escariado en una sola operación, reduciendo tiempo de ciclo.', features: ['2 en 1', 'Productividad', 'HSS-E'], specs: ['Ø 4-16mm', 'Especial'] },
+        { slug: 'circular-saws', cat: 'sierras', badge: 'Sierras', img: '/img/prod-serrascirculares.jpg', title: 'Sierras Circulares', desc: 'Corte limpio y preciso en varios materiales.', features: ['Metal', 'Madera', 'Plástico'], specs: ['Ø 63-315mm', 'DIN 1837'] },
+        { slug: 'whirling', cat: 'especiales', badge: 'Especiales', img: '/img/prod-turbilhonamento.png', title: 'Turbillonado (Whirling)', desc: 'Proceso whirling para roscas de alta precisión y perfiles complejos.', features: ['Alta Productividad','Acabado Superior','Geometría precisa'], specs: ['Proceso dedicado','Aplicaciones especiales'] },
       ]
     },
     company: {
@@ -285,16 +293,17 @@ export const translations = {
       ],
       infraTitle: 'Infraestructura Moderna', infraLead: 'Instalaciones de vanguardia para fabricación de alta precisión.',
       infraBullets: ['5.000m² de área fabril', 'Máquinas CNC de última generación', 'Laboratorio de metrología equipado', 'Centro de desarrollo de productos', 'Sistema de calidad certificado'],
-      ctaTitle: 'Sea Parte de Nuestra Historia', ctaDesc: 'Contáctenos para ver cómo podemos ayudar a su empresa', ctaContact: 'Contáctenos', ctaProducts: 'Ver Productos'
+      ctaTitle: 'Sea Parte de Nuestra Historia', ctaDesc: 'Contáctenos para ver cómo podemos ayudar a su empresa', ctaContact: 'Contáctenos', ctaProducts: 'Ver Productos',
+      mapSpotTitle: 'Nuestra Presencia en Brasil',
+      mapSpotDesc: 'Con sede en Espírito Santo do Pinhal/SP, atendiendo a todo el país.'
     },
     services: {
       headerTitle: 'Nuestros Servicios', headerDesc: 'Soluciones completas en herramientas de precisión',
       sectionTitle: 'Servicios Especializados', sectionDesc: 'Gama completa de servicios para optimizar su producción',
       cards: [
-        { icon: 'fas fa-tools', title: 'Afilado y Reacondicionamiento', desc: 'Afilado especializado devolviendo el rendimiento original.' },
+        { icon: 'fas fa-tools', title: 'Afilación', desc: 'Afilado especializado de herramientas.' },
         { icon: 'fas fa-drafting-compass', title: 'Herramientas a Medida', desc: 'Desarrollo y fabricación basados en planos o muestras.' },
         { icon: 'fas fa-user-tie', title: 'Consultoría Técnica', desc: 'Análisis de procesos con recomendaciones para aumentar productividad.' },
-        { icon: 'fas fa-shipping-fast', title: 'Logística y Entrega', desc: 'Gestión de stock en consignación y entregas.' },
       ],
       processTitle: 'Cómo Trabajamos', processDesc: 'Calidad y eficiencia en cada etapa',
       processSteps: [

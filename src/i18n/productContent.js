@@ -10,6 +10,7 @@ export const aliasToCanonical = {
   'fresas-woodruff': 'fresas-woodruff',
   'puncoes': 'puncoes',
   'brocas-alargadoras': 'brocas-alargadoras',
+  'turbilhonamento': 'turbilhonamento',
   // EN slugs
   'drills': 'brocas',
   'endmills': 'fresas-topo',
@@ -21,6 +22,8 @@ export const aliasToCanonical = {
   'woodruff-cutters': 'fresas-woodruff',
   'punches': 'puncoes',
   'reamer-drills': 'brocas-alargadoras',
+  'whirling': 'turbilhonamento',
+  'whirling-process': 'turbilhonamento',
 }
 
 export const productContent = {
@@ -63,6 +66,10 @@ export const productContent = {
   'brocas-alargadoras': {
     images: ['/img/prod-brocasalargadoras.jpg', '/img/prod-alargador.jpg', '/img/prod-brocas.jpg'],
     related: ['brocas', 'alargadores', 'fresas-topo', 'ferramentas-perfil']
+  },
+  'turbilhonamento': {
+    images: ['/img/prod-turbilhonamento.png', '/img/prod-ferramentasperfil.jpg', '/img/prod-fresascirculares.jpg'],
+    related: ['ferramentas-perfil', 'fresas-circulares', 'brocas', 'alargadores']
   },
 }
 
@@ -109,6 +116,14 @@ export const productTexts = {
     'fresas-woodruff': { badge: 'Fresas', title: 'Fresas Woodruff', description: 'Para rasgos de chaveta tipo meia-lua.', tabs: [ {id:'especificacoes', title:'Especificações', items:['Ø 13-32mm','DIN 850']} ] },
     'puncoes': { badge: 'Especiais', title: 'Punções', description: 'Ferramentas especiais para marcação e perfuração.', tabs: [ {id:'especificacoes', title:'Especificações', items:['Sob medida']} ] },
     'brocas-alargadoras': { badge: 'Alargadores', title: 'Brocas Alargadoras', description: 'Duas operações em uma única ferramenta.', tabs: [ {id:'especificacoes', title:'Especificações', items:['Ø 4-16mm']} ] },
+    'turbilhonamento': {
+      badge: 'Especiais',
+      title: 'Turbilhonamento',
+      description: 'Processo de whirling para roscas de alta precisão e perfis complexos.',
+      tabs: [
+        { id: 'especificacoes', title: 'Especificações', items: ['Excelente acabamento superficial', 'Geometria de rosca precisa', 'Alta estabilidade de processo'] }
+      ]
+    },
   },
   en: {
     'brocas': { badge: 'Drills', title: 'Drills', description: 'High-performance drills with optimized geometry.', tabs: [ {id:'specs', title:'Specifications', items:['Helical design','Various dimensions']} ] },
@@ -121,6 +136,7 @@ export const productTexts = {
     'fresas-woodruff': { badge: 'Mills', title: 'Woodruff Cutters', description: 'Keyway half-moon slots.', tabs: [ {id:'specs', title:'Specifications', items:['Ø 13-32mm','DIN 850']} ] },
     'puncoes': { badge: 'Special', title: 'Punches', description: 'Special marking and punching tools.', tabs: [ {id:'specs', title:'Specifications', items:['Custom']} ] },
     'brocas-alargadoras': { badge: 'Reamers', title: 'Reamer Drills', description: 'Drilling + reaming in one tool.', tabs: [ {id:'specs', title:'Specifications', items:['Ø 4-16mm']} ] },
+    'turbilhonamento': { badge: 'Special', title: 'Whirling', description: 'High-speed whirling for precise threads and complex profiles.', tabs: [ {id:'specs', title:'Specifications', items:['High surface finish','Excellent thread form','Process stability']} ] },
   },
   es: {
     'brocas': { badge: 'Brocas', title: 'Brocas', description: 'Brocas de alto rendimiento con geometría optimizada.', tabs: [ {id:'especificaciones', title:'Especificaciones', items:['Diseño helicoidal','Varias dimensiones']} ] },
@@ -133,5 +149,6 @@ export const productTexts = {
     'fresas-woodruff': { badge: 'Fresas', title: 'Fresas Woodruff', description: 'Ranuras de chaveta tipo media luna.', tabs: [ {id:'especificaciones', title:'Especificaciones', items:['Ø 13-32mm','DIN 850']} ] },
     'puncoes': { badge: 'Especiales', title: 'Punzones', description: 'Herramientas especiales para marcado y perforación.', tabs: [ {id:'especificaciones', title:'Especificaciones', items:['A medida']} ] },
     'brocas-alargadoras': { badge: 'Escariadores', title: 'Brocas Escariadoras', description: 'Perforación + escariado en una herramienta.', tabs: [ {id:'especificaciones', title:'Especificaciones', items:['Ø 4-16mm']} ] },
+    'turbilhonamento': { badge: 'Especiales', title: 'Turbillonado (Whirling)', description: 'Proceso de whirling para roscas y perfiles complejos con alta precisión.', tabs: [ {id:'especificaciones', title:'Especificaciones', items:['Excelente acabado superficial','Geometría de rosca precisa','Alta estabilidad de proceso']} ] },
   }
 }

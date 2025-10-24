@@ -81,6 +81,18 @@ export default function Empresa() {
         </div>
       </section>
 
+      <section className="content-section">
+        <div className="container-modern">
+          <div className="section-title" data-aos="fade-up">
+            <h2>{t.mapSpotTitle}</h2>
+            <p>{t.mapSpotDesc}</p>
+          </div>
+          <div style={{ display: 'flex', justifyContent: 'center' }} data-aos="zoom-in">
+            <img src="/img/mapa.png" alt="Mapa Swisstool" style={{ maxWidth: 360, width: '100%', borderRadius: '50%', boxShadow: '0 10px 30px rgba(0,0,0,.12)' }} />
+          </div>
+        </div>
+      </section>
+
       <section className="content-section bg-light">
         <div className="container-modern">
           <div className="row align-items-center">

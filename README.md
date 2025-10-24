@@ -52,3 +52,6 @@ SITEMAP_BASE_URL="http://swisstool.com.br" npm run build
 ```
 
 You can also regenerate manually: `npm run sitemap`. The sitemap includes all locales and product detail routes using hash URLs.
+
+
+# codex resume 019a088f-b8eb-7560-8da7-2460a30b4a48
