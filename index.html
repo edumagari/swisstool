@@ -41,6 +41,10 @@
           if (isContact) return ['/css/global-modern.css','/css/app.css','/css/contato.css']
           return ['/css/app.css']
         }
+
+        // Add loading indicator
+        document.body.classList.add('css-loading')
+
         var hash = window.location.hash || '#/pt'
         var path = hash.replace(/^#/, '')
         var parts = path.split('/')
@@ -48,12 +52,40 @@
         var rest = parts.slice(2).join('/')
         var cssSet = computeCss(lang, rest)
         window.__dynamicStyles = window.__dynamicStyles || {}
+        var loadCount = 0
+        var totalToLoad = cssSet.filter(function(h) { return !window.__dynamicStyles[h] }).length
+
         cssSet.forEach(function(href){
           if (window.__dynamicStyles[href]) return
-          var l = document.createElement('link'); l.rel='stylesheet'; l.href=href; l.setAttribute('data-dynamic-style','yes')
+          var l = document.createElement('link')
+          l.rel = 'stylesheet'
+          l.href = href
+          l.setAttribute('data-dynamic-style', 'yes')
+
+          // Add load handlers for initial CSS
+          l.onload = function() {
+            loadCount++
+            if (loadCount >= totalToLoad) {
+              document.body.classList.remove('css-loading')
+            }
+          }
+
+          l.onerror = function() {
+            console.error('Failed to load initial CSS:', href)
+            loadCount++
+            if (loadCount >= totalToLoad) {
+              document.body.classList.remove('css-loading')
+            }
+          }
+
           document.head.appendChild(l)
           window.__dynamicStyles[href] = l
         })
+
+        // Fallback: remove loading class after 2 seconds
+        setTimeout(function() {
+          document.body.classList.remove('css-loading')
+        }, 2000)
       })();
     </script>
   </head>
@@ -64,6 +96,61 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- AOS initialization fallback and error handling -->
+    <script>
+      // Wait for AOS to be available and provide initialization helper
+      window.addEventListener('load', function() {
+        // Ensure AOS is available globally
+        if (typeof AOS === 'undefined') {
+          console.error('AOS library failed to load, attempting fallback...')
+          // Try to load AOS from alternative CDN
+          var script = document.createElement('script')
+          script.src = 'https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js'
+          script.onload = function() {
+            console.log('AOS loaded from fallback CDN')
+            if (window.AOS) {
+              window.dispatchEvent(new Event('aos-loaded'))
+            }
+          }
+          script.onerror = function() {
+            console.error('Failed to load AOS from fallback CDN')
+            // Create a dummy AOS object to prevent errors
+            window.AOS = {
+              init: function() { console.warn('AOS not available, animations disabled') },
+              refresh: function() { },
+              refreshHard: function() { }
+            }
+          }
+          document.head.appendChild(script)
+        } else {
+          // AOS loaded successfully
+          window.dispatchEvent(new Event('aos-loaded'))
+        }
+
+        // Global error handler for animation issues
+        window.addEventListener('error', function(e) {
+          if (e.message && e.message.includes('AOS')) {
+            console.error('AOS error caught:', e)
+            // Attempt recovery
+            if (window.AOS && window.AOS.refresh) {
+              setTimeout(function() {
+                try {
+                  window.AOS.refresh()
+                } catch (err) {
+                  console.error('Failed to recover AOS:', err)
+                }
+              }, 100)
+            }
+          }
+        })
+      })
+
+      // Provide helper for React to check AOS status
+      window.isAOSReady = function() {
+        return typeof AOS !== 'undefined' && AOS.init && AOS.refresh
+      }
+    </script>
 
     <script type="module" src="/src/main.jsx"></script>
   </body>

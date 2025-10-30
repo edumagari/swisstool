@@ -26,10 +26,70 @@ export default function App() {
   useEffect(() => setLang(inferred), [inferred])
 
   useEffect(() => {
-    if (window.AOS) {
-      window.AOS.init({ duration: 1000, once: true })
-      // Refresh on route change to ensure data-aos triggers
-      setTimeout(() => window.AOS.refreshHard?.(), 0)
+    // Ensure AOS is loaded and DOM is ready
+    const initializeAOS = () => {
+      if (!window.AOS) {
+        console.warn('AOS library not loaded yet')
+        return
+      }
+
+      try {
+        // Initialize AOS with more robust settings
+        window.AOS.init({
+          duration: 1000,
+          once: false, // Changed to false to allow re-animation on route changes
+          easing: 'ease-in-out',
+          delay: 0,
+          offset: 50,
+          anchorPlacement: 'top-bottom',
+          disable: false,
+          startEvent: 'DOMContentLoaded',
+          disableMutationObserver: false,
+          throttleDelay: 99,
+          debounceDelay: 50
+        })
+
+        // Use proper refresh method with adequate delay for DOM updates
+        setTimeout(() => {
+          try {
+            window.AOS.refresh() // Correct method name
+          } catch (e) {
+            console.error('Error refreshing AOS:', e)
+          }
+        }, 100) // Increased delay for DOM stability
+      } catch (error) {
+        console.error('Error initializing AOS:', error)
+      }
+    }
+
+    // Check if AOS is ready using our helper function
+    if (window.isAOSReady && window.isAOSReady()) {
+      initializeAOS()
+    } else if (window.AOS) {
+      // AOS exists but might not be fully ready
+      setTimeout(initializeAOS, 100)
+    } else {
+      // Wait for AOS to load
+      const checkAOS = setInterval(() => {
+        if (window.isAOSReady ? window.isAOSReady() : window.AOS) {
+          clearInterval(checkAOS)
+          initializeAOS()
+        }
+      }, 100)
+
+      // Also listen for aos-loaded event
+      const handleAOSLoaded = () => {
+        clearInterval(checkAOS)
+        initializeAOS()
+        window.removeEventListener('aos-loaded', handleAOSLoaded)
+      }
+      window.addEventListener('aos-loaded', handleAOSLoaded)
+
+      // Cleanup after 3 seconds if AOS never loads
+      setTimeout(() => {
+        clearInterval(checkAOS)
+        window.removeEventListener('aos-loaded', handleAOSLoaded)
+      }, 3000)
     }
   }, [location])
 
@@ -134,6 +194,7 @@ function DynamicCss() {
 
     let loaded = 0
     const total = toAdd.length
+
     function cleanup() {
       // Remove leftovers only after new styles (if any) are loaded
       toRemove.forEach(href => {
@@ -141,6 +202,17 @@ function DynamicCss() {
         if (el && el.parentNode) el.parentNode.removeChild(el)
         delete registry[href]
       })
+
+      // Refresh AOS after CSS changes are complete
+      if (window.AOS) {
+        setTimeout(() => {
+          try {
+            window.AOS.refresh()
+          } catch (e) {
+            console.error('Error refreshing AOS after CSS load:', e)
+          }
+        }, 50)
+      }
     }
 
     if (total === 0) {
@@ -148,13 +220,42 @@ function DynamicCss() {
       return
     }
 
+    // Add loading state to prevent animations during CSS load
+    document.body.classList.add('css-loading')
+
     toAdd.forEach(href => {
       const link = document.createElement('link')
       link.rel = 'stylesheet'
       link.href = href
       link.setAttribute('data-dynamic-style', 'yes')
-      link.onload = () => { loaded++; if (loaded === total) cleanup() }
-      link.onerror = () => { loaded++; if (loaded === total) cleanup() }
+
+      link.onload = () => {
+        loaded++
+        if (loaded === total) {
+          cleanup()
+          // Remove loading state and trigger animations
+          setTimeout(() => {
+            document.body.classList.remove('css-loading')
+            if (window.AOS) {
+              try {
+                window.AOS.refresh()
+              } catch (e) {
+                console.error('Error refreshing AOS after CSS load:', e)
+              }
+            }
+          }, 50)
+        }
+      }
+
+      link.onerror = (error) => {
+        console.error(`Failed to load CSS: ${href}`, error)
+        loaded++
+        if (loaded === total) {
+          cleanup()
+          document.body.classList.remove('css-loading')
+        }
+      }
+
       document.head.appendChild(link)
       registry[href] = link
     })

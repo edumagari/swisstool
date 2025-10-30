@@ -10,6 +10,32 @@
     --gradient: linear-gradient(135deg, #8c2624 0%, #b53532 100%);
 }
 
+/* Animation loading state - prevents animations during CSS/DOM loading */
+body.css-loading [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    pointer-events: none;
+}
+
+/* Ensure elements are visible but not animated when loading */
+body.css-loading * {
+    animation-play-state: paused !important;
+    animation-duration: 0s !important;
+    transition-duration: 0s !important;
+}
+
+/* Fallback for elements that might be hidden */
+body.css-loading [data-aos]:not([data-aos-easing]) {
+    transition-timing-function: ease !important;
+}
+
+/* Prevent flashing during load */
+body.css-loading {
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
 * {
     margin: 0;
     padding: 0;

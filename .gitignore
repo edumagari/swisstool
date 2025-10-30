@@ -45,4 +45,5 @@ temp/
 
 # Generated at build by prebuild script
 public/sitemap.xml
-
+CLAUDE.md
+AGENTS.md
